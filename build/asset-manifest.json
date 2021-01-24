@@ -1,22 +1,43 @@
 {
   "files": {
     "main.css": "/static/css/main.d4a5e9ed.chunk.css",
-    "main.js": "/static/js/main.071294bd.chunk.js",
-    "main.js.map": "/static/js/main.071294bd.chunk.js.map",
+    "main.js": "/static/js/main.5e183b7a.chunk.js",
+    "main.js.map": "/static/js/main.5e183b7a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5200c9fc.js",
     "runtime-main.js.map": "/static/js/runtime-main.5200c9fc.js.map",
-    "static/js/2.39b61bb2.chunk.js": "/static/js/2.39b61bb2.chunk.js",
-    "static/js/2.39b61bb2.chunk.js.map": "/static/js/2.39b61bb2.chunk.js.map",
+    "static/js/2.9c4c0e46.chunk.js": "/static/js/2.9c4c0e46.chunk.js",
+    "static/js/2.9c4c0e46.chunk.js.map": "/static/js/2.9c4c0e46.chunk.js.map",
     "static/js/3.2a657dbe.chunk.js": "/static/js/3.2a657dbe.chunk.js",
     "static/js/3.2a657dbe.chunk.js.map": "/static/js/3.2a657dbe.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.d4a5e9ed.chunk.css.map": "/static/css/main.d4a5e9ed.chunk.css.map",
-    "static/js/2.39b61bb2.chunk.js.LICENSE.txt": "/static/js/2.39b61bb2.chunk.js.LICENSE.txt"
+    "static/js/2.9c4c0e46.chunk.js.LICENSE.txt": "/static/js/2.9c4c0e46.chunk.js.LICENSE.txt",
+    "static/media/button-row-1-left-sticker.29115f94.svg": "/static/media/button-row-1-left-sticker.29115f94.svg",
+    "static/media/button-row-1-right-sticker.c107ce59.svg": "/static/media/button-row-1-right-sticker.c107ce59.svg",
+    "static/media/button-row-2-left-sticker.19827882.svg": "/static/media/button-row-2-left-sticker.19827882.svg",
+    "static/media/button-row-2-right-sticker.19827882.svg": "/static/media/button-row-2-right-sticker.19827882.svg",
+    "static/media/button-row-3-left-sticker.102b0155.svg": "/static/media/button-row-3-left-sticker.102b0155.svg",
+    "static/media/button-row-3-right-sticker.b0fa20ed.svg": "/static/media/button-row-3-right-sticker.b0fa20ed.svg",
+    "static/media/button-row-4-left-sticker.d7444a22.svg": "/static/media/button-row-4-left-sticker.d7444a22.svg",
+    "static/media/button-row-4-right-sticker.930f7107.svg": "/static/media/button-row-4-right-sticker.930f7107.svg",
+    "static/media/button-row-5-left-sticker.bf8825b4.svg": "/static/media/button-row-5-left-sticker.bf8825b4.svg",
+    "static/media/button-row-5-right-sticker.a60ba6e5.svg": "/static/media/button-row-5-right-sticker.a60ba6e5.svg",
+    "static/media/icon-enable.8749324a.svg": "/static/media/icon-enable.8749324a.svg",
+    "static/media/icon-flash.308126b4.svg": "/static/media/icon-flash.308126b4.svg",
+    "static/media/icon-mute.041089c4.svg": "/static/media/icon-mute.041089c4.svg",
+    "static/media/icon-next.f539b5ba.svg": "/static/media/icon-next.f539b5ba.svg",
+    "static/media/icon-pit-limit.edb7cf28.svg": "/static/media/icon-pit-limit.edb7cf28.svg",
+    "static/media/icon-prev.d5b89968.svg": "/static/media/icon-prev.d5b89968.svg",
+    "static/media/icon-radio.35cf597e.svg": "/static/media/icon-radio.35cf597e.svg",
+    "static/media/icon-reset.2a01c87f.svg": "/static/media/icon-reset.2a01c87f.svg",
+    "static/media/icon-vol-minus.d8c80e2a.svg": "/static/media/icon-vol-minus.d8c80e2a.svg",
+    "static/media/icon-vol-plus.41767c63.svg": "/static/media/icon-vol-plus.41767c63.svg",
+    "static/media/rotary-base.f35508f3.svg": "/static/media/rotary-base.f35508f3.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.5200c9fc.js",
-    "static/js/2.39b61bb2.chunk.js",
+    "static/js/2.9c4c0e46.chunk.js",
     "static/css/main.d4a5e9ed.chunk.css",
-    "static/js/main.071294bd.chunk.js"
+    "static/js/main.5e183b7a.chunk.js"
   ]
 }
