@@ -1,8 +1,6 @@
 import React from 'react';
 
-
-
-const ButtonSelect = ({setButtonColor, number, color, value}) => {
+const ButtonSelect = ({setButtonColor, number, color}) => {
 
     return (
         <select value={color} onChange={(e) =>
@@ -10,11 +8,12 @@ const ButtonSelect = ({setButtonColor, number, color, value}) => {
                 setButtonColor(number, e.target.value);
             }
         }>
-            <option value="Red">{"Red"}</option>
-            <option value="Green">{"Green"}</option>
-            <option value="Blue">{"Blue"}</option>
-            <option value="Black">{"Black"}</option>
-            <option value="Yellow">{"Yellow"}</option>
+            <option value="black">{"Black"}</option>
+            <option value="red">{"Red"}</option>
+            <option value="green">{"Green"}</option>
+            <option value="blue">{"Blue"}</option>
+            <option value="yellow">{"Yellow"}</option>
+            <option value="white">{"White"}</option>
         </select>
     );
 }

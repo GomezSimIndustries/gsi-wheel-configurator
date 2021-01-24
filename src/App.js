@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import GSIConfigButton from '../src/button';
 import ButtonSelect from '../src/button-select';
+import TextSelect from '../src/text-select';
 
 import { RotaryBase } from './stickers';
 
@@ -35,23 +36,44 @@ class GSIButtonConfig extends Component {
     super(props);
     this.state = {
       buttonColors: [
-        "Black",
-        "Black",
-        "Black",
-        "Black",
-        "Black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
       ],
       stickerColors: [
-        "Red",
-        "Red",
-        "Red",
-        "Red",
-        "Red",
+        "red",
+        "red",
+        "red",
+        "red",
+        "red",
+      ],
+      textColors: [
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+      ],
+      text: [
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
+        "flash",
       ],
       monochrome: false,
     };
     this.setButtonColor = this.setButtonColor.bind(this);
     this.setStickerColor = this.setStickerColor.bind(this);
+    this.setTextColor = this.setTextColor.bind(this);
+    this.setText = this.setText.bind(this);
   }
 
   setButtonColor(number, color) {
@@ -74,6 +96,26 @@ class GSIButtonConfig extends Component {
     this.setState({ stickerColors: colors });
   }
 
+  setTextColor(number, color) {
+    if (number === 0) {
+      this.setState({ textColors: [color, color, color, color, color] });
+      return;
+    }
+    let colors = [...this.state.textColors];
+    colors[number - 1] = color;
+    this.setState({ textColors: colors });
+  }
+
+  setText(number, text) {
+    if (number === 0) {
+      this.setState({ text: [text, text, text, text, text, text, text, text, text, text] });
+      return;
+    }
+    let texts = [...this.state.text];
+    texts[number - 1] = text;
+    this.setState({ text: texts });
+  }
+
   render() {
     return (
       <$ConfigContainer>
@@ -85,7 +127,7 @@ class GSIButtonConfig extends Component {
           }
         }} />
         {this.state.monochrome ?
-          <ButtonSelect setButtonColor={this.setButtonColor} number={0} color={this.state.buttonColors[0]} />
+          <ButtonSelect setButtonColor={this.setButtonColor} number={0} value={this.state.buttonColors[0]} color={this.state.buttonColors[0]} />
           :
           <$ButtonSelectGroup>
             {this.state.buttonColors.map((color, idx) => (
@@ -99,21 +141,91 @@ class GSIButtonConfig extends Component {
             <ButtonSelect key={idx} setButtonColor={this.setStickerColor} value={this.state.stickerColors[idx]} number={idx + 1} color={color} />
           ))}
         </$ButtonSelectGroup>
+        <$ButtonSelectGroup>
+          {this.state.textColors.map((color, idx) => (
+            <ButtonSelect key={idx} setButtonColor={this.setTextColor} value={this.state.textColors[idx]} number={idx + 1} color={color} />
+          ))}
+        </$ButtonSelectGroup>
+        <$ButtonSelectGroup>
+          {this.state.text.map((text, idx) => (
+            <TextSelect key={idx} setText={this.setText} value={this.state.text[idx]} number={idx + 1} text={text} />
+          ))}
+        </$ButtonSelectGroup>
         <$ButtonsContainer>
           <img src='./images/fpe-trans-buttons-base.png' alt='button base' />
           <$LeftButtons>
-            <GSIConfigButton stickerColor={this.state.stickerColors[0]} buttonColor={this.state.buttonColors[0]} row={1} side={"left"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[1]} buttonColor={this.state.buttonColors[1]} row={2} side={"left"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[2]} buttonColor={this.state.buttonColors[2]} row={3} side={"left"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[3]} buttonColor={this.state.buttonColors[3]} row={4} side={"left"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[4]} buttonColor={this.state.buttonColors[4]} row={5} side={"left"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[0]}
+              buttonColor={this.state.buttonColors[0]}
+              textColor={this.state.textColors[0]}
+              text={this.state.text[0]}
+              row={1}
+              side={"left"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[1]}
+              buttonColor={this.state.buttonColors[1]}
+              textColor={this.state.textColors[1]}
+              text={this.state.text[1]}
+              row={2}
+              side={"left"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[2]}
+              buttonColor={this.state.buttonColors[2]}
+              textColor={this.state.textColors[2]}
+              text={this.state.text[2]}
+              row={3}
+              side={"left"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[3]}
+              buttonColor={this.state.buttonColors[3]}
+              textColor={this.state.textColors[3]}
+              text={this.state.text[3]}
+              row={4}
+              side={"left"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[4]}
+              buttonColor={this.state.buttonColors[4]}
+              textColor={this.state.textColors[4]}
+              text={this.state.text[4]}
+              row={5}
+              side={"left"} />
           </$LeftButtons>
           <$RightButtons>
-            <GSIConfigButton stickerColor={this.state.stickerColors[0]} buttonColor={this.state.buttonColors[0]} row={1} side={"right"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[1]} buttonColor={this.state.buttonColors[1]} row={2} side={"right"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[2]} buttonColor={this.state.buttonColors[2]} row={3} side={"right"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[3]} buttonColor={this.state.buttonColors[3]} row={4} side={"right"} />
-            <GSIConfigButton stickerColor={this.state.stickerColors[4]} buttonColor={this.state.buttonColors[4]} row={5} side={"right"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[0]}
+              buttonColor={this.state.buttonColors[0]}
+              textColor={this.state.textColors[0]}
+              text={this.state.text[5]}
+              row={1}
+              side={"right"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[1]}
+              buttonColor={this.state.buttonColors[1]}
+              textColor={this.state.textColors[1]}
+              text={this.state.text[6]}
+              row={2}
+              side={"right"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[2]}
+              buttonColor={this.state.buttonColors[2]}
+              textColor={this.state.textColors[2]}
+              text={this.state.text[7]}
+              row={3}
+              side={"right"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[3]}
+              buttonColor={this.state.buttonColors[3]}
+              textColor={this.state.textColors[3]}
+              text={this.state.text[8]}
+              row={4}
+              side={"right"} />
+            <GSIConfigButton
+              stickerColor={this.state.stickerColors[4]}
+              buttonColor={this.state.buttonColors[4]}
+              textColor={this.state.textColors[4]}
+              text={this.state.text[9]}
+              row={5}
+              side={"right"} />
           </$RightButtons>
           <$RotaryContainer>
             <RotaryBase height="194px" width="303px" />
