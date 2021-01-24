@@ -1,0 +1,11 @@
+export { ReactComponent as Row1Left } from './stickers/button-row-1-left-sticker.svg';
+export { ReactComponent as Row1Right } from './stickers/button-row-1-right-sticker.svg';
+export { ReactComponent as Row2Left } from './stickers/button-row-2-left-sticker.svg';
+export { ReactComponent as Row2Right } from './stickers/button-row-2-right-sticker.svg';
+export { ReactComponent as Row3Left } from './stickers/button-row-3-left-sticker.svg';
+export { ReactComponent as Row3Right } from './stickers/button-row-3-right-sticker.svg';
+export { ReactComponent as Row4Left } from './stickers/button-row-4-left-sticker.svg';
+export { ReactComponent as Row4Right } from './stickers/button-row-4-right-sticker.svg';
+export { ReactComponent as Row5Left } from './stickers/button-row-5-left-sticker.svg';
+export { ReactComponent as Row5Right } from './stickers/button-row-5-right-sticker.svg';
+export { ReactComponent as RotaryBase } from './stickers/rotary-base.svg';
