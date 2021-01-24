@@ -162,7 +162,7 @@ class GSIConfigButton extends Component {
         let offsetY;
         const buttonX = config[`Row${row}`][`button${sideText}`].x;
         const buttonY = config[`Row${row}`][`button${sideText}`].y;
-        console.log("buttonX", buttonX);
+        console.log(`./images/buttons/btn-${buttonColor.toLowerCase()}-${side}.png`);
         console.log("buttonY", buttonY);
 
         offsetX = config[`Row${row}`].[`sticker${sideText}`].x;
@@ -179,7 +179,7 @@ class GSIConfigButton extends Component {
             <$ButtonContainer x={buttonX} y={buttonY} side={side}>
                 <Sticker style={{ color: stickerColor, top: offsetY, left: offsetX }} height={height} width={width} />
                 <img className="buttonGuard" src={`./images/buttons/button-guard.png`} alt='button-guard' />
-                <img src={`./images/buttons/btn-${buttonColor}-${side}.png`} alt='button sticker' />
+                <img src={`./images/buttons/btn-${buttonColor.toLowerCase()}-${side}.png`} alt='button sticker' />
             </$ButtonContainer>
         );
     }
