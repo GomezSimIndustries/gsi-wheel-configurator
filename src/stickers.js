@@ -9,3 +9,8 @@ export { ReactComponent as Row4Right } from './stickers/button-row-4-right-stick
 export { ReactComponent as Row5Left } from './stickers/button-row-5-left-sticker.svg';
 export { ReactComponent as Row5Right } from './stickers/button-row-5-right-sticker.svg';
 export { ReactComponent as RotaryBase } from './stickers/rotary-base.svg';
+export { ReactComponent as RotaryLeft } from './stickers/rotary-left.svg';
+export { ReactComponent as RotaryRight } from './stickers/rotary-right.svg';
+export { ReactComponent as RotaryDir } from './stickers/rotary-dir.svg';
+export { ReactComponent as RotaryCenter } from './stickers/rotary-center.svg';
+export { ReactComponent as Funky } from './stickers/funky.svg';
