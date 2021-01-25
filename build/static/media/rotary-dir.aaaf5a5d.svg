@@ -1,0 +1,12 @@
+<svg id="Layer_1" data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.47 66.52">
+    <defs>
+        <style>.cls-1,.cls-2,.cls-3{fill:useCurrent;}.cls-1,.cls-2{stroke:useCurrent;stroke-miterlimit:10;}.cls-1{stroke-width:1.42px;}.cls-3{fill:useCurrent;}</style>
+    </defs>
+    <path class="cls-1" d="M512.84,771.94a1,1,0,0,1-1-1,47,47,0,0,0-25.3-41.74,1,1,0,0,1-.4-1.29,1,1,0,0,1,1.29-.41A48.88,48.88,0,0,1,513.8,771,1,1,0,0,1,512.84,771.94Z" transform="translate(-405.77 -726.74)"/>
+    <polygon class="cls-2" points="111.36 39.83 107.07 50.52 102.79 39.83 111.36 39.83"/>
+    <path class="cls-1" d="M410.79,771.94a.94.94,0,0,1-1-1,48.88,48.88,0,0,1,26.33-43.44,1,1,0,1,1,.88,1.7A47,47,0,0,0,411.75,771,1,1,0,0,1,410.79,771.94Z" transform="translate(-405.77 -726.74)"/>
+    <polygon class="cls-2" points="0.74 39.83 5.03 50.52 9.31 39.83 0.74 39.83"/>
+    <path class="cls-3" d="M514.07,783.43a4.95,4.95,0,1,0,4.11,4.1A5,5,0,0,0,514.07,783.43Zm1.87,5.79H514.2v2.08h-1.81V789.2h-1.75v-1.79h1.75v-2.09h1.81v2.08h1.73Z" transform="translate(-405.77 -726.74)"/>
+    <path class="cls-3" d="M411.71,783.43a4.95,4.95,0,1,0,4.1,4.1A5,5,0,0,0,411.71,783.43Zm1.87,4v1.79l-5.29,0v-1.79Z" transform="translate(-405.77 -726.74)"/>
+</svg>
