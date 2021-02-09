@@ -41,6 +41,21 @@ export const stickerTexts = {
     },
 };
 
+export const rotaryTexts = {
+    bias: {
+        text: 'BIAS'
+    },
+    scroll: {
+        text: 'SCRL'
+    },
+    option: {
+        text: 'OPT'
+    },
+    menu: {
+        text: 'MENU'
+    },
+};
+
 export const funkyColors = [
     'red',
     'black'
@@ -53,12 +68,18 @@ export const rotaryColors = [
     'black'
 ];
 
+export const textColors = [
+    'white',
+    'black'
+]
+
 export const rotaryStickerColors = [
     'red',
     'orange',
     'green',
     'yellow',
-    'blue'
+    'blue',
+    'pink'
 ];
 
 export const buttonColors = [
@@ -74,35 +95,103 @@ export const stickerColors = [
     'red',
     'blue',
     'green',
+    'purple',
+    'orange',
     'yellow',
     'white'
 ];
 
 export const rotaryConfig = [
     {
-        x: "130px",
-        y: "144px"
+        x: "130",
+        y: "144",
+        text: {
+            x: -2,
+            y: -21
+        },
+        sticker: {
+            width: 40,
+            height: 70,
+            x: 1,
+            y: -24
+        },
+        dir: 'funky'
     },
     {
-        x: "13px",
-        y: "13px",
+        x: "13",
+        y: "13",
+        text: {
+            x: 59,
+            y: -8
+        },
+        sticker: {
+            width: 114,
+            height: 88,
+            x: -7,
+            y: -8
+        },
+        dir: 'right'
     },
     {
-        x: "116px",
-        y: "33px",
+        x: "116",
+        y: "33",
+        text: {
+            x: 0,
+            y: 0
+        },
+        sticker: {
+            width: 114,
+            height: 88,
+            x: -20,
+            y: -5
+        },
+        dir: 'center'
     },
     {
-        x: "218px",
-        y: "13px",
+        x: "218",
+        y: "13",
+        text: {
+            x: -33,
+            y: -8
+        },
+        sticker: {
+            width: 114,
+            height: 88,
+            x: -33,
+            y: -8
+        },
+        dir: 'left'
     },
     {
-        x: "41px",
-        y: "109px",
+        x: "41",
+        y: "109",
+        text: {
+            x: -34,
+            y: -5
+        },
+        sticker: {
+            width: 114,
+            height: 88,
+            x: -33,
+            y: -6
+        },
+        dir: 'left'
     },
     {
-        x: "189px",
-        y: "109px",
-    },
+        x: "189",
+        y: "109",
+        text: {
+            x: 58,
+            y: -5
+        },
+        sticker: {
+            width: 114,
+            height: 88,
+            x: -8,
+            y: -6
+        },
+        dir: 'right'
+    }
 ];
 
 export const config = {
@@ -118,12 +207,12 @@ export const config = {
             y: "27px",
         },
         stickerLeft: {
-            x: "-15px",
-            y: "-16px"
+            x: "-15",
+            y: "-16"
         },
         stickerRight: {
-            x: "-52px",
-            y: "-16px"
+            x: "-52",
+            y: "-16"
         },
         textLeft: {
             x: "51px",
@@ -158,12 +247,12 @@ export const config = {
             y: "121px",
         },
         stickerLeft: {
-            x: "-19px",
-            y: "-33px"
+            x: "-19",
+            y: "-33"
         },
         stickerRight: {
-            x: "-19px",
-            y: "-33px"
+            x: "-19",
+            y: "-33"
         },
         textLeft: {
             x: "-19px",
@@ -198,12 +287,12 @@ export const config = {
             y: "203px",
         },
         stickerLeft: {
-            x: "-17px",
-            y: "-16px"
+            x: "-17",
+            y: "-16"
         },
         stickerRight: {
-            x: "-44px",
-            y: "-16px"
+            x: "-44",
+            y: "-16"
         },
         textLeft: {
             x: "40px",
@@ -238,12 +327,12 @@ export const config = {
             y: "285px",
         },
         stickerLeft: {
-            x: "-21px",
-            y: "-16px"
+            x: "-21",
+            y: "-16"
         },
         stickerRight: {
-            x: "-40px",
-            y: "-16px"
+            x: "-40",
+            y: "-16"
         },
         textLeft: {
             x: "35px",
@@ -278,12 +367,12 @@ export const config = {
             y: "366px",
         },
         stickerLeft: {
-            x: "-36px",
-            y: "-17px"
+            x: "-36",
+            y: "-17"
         },
         stickerRight: {
-            x: "-18px",
-            y: "-17px"
+            x: "-18",
+            y: "-17"
         },
         textLeft: {
             x: "-34px",

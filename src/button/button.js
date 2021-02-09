@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import * as Stickers from './stickers';
-import * as Icons from './icons';
-import { stickerTexts, config } from './config'
+import * as Stickers from '../stickers';
+import * as Icons from '../icons';
+import { stickerTexts, config } from '../config'
+import ButtonEditor from './button-editor';
+
+const $StickerContainer = styled.div`
+    color: ${p => p.color};
+    top: ${p => p.y}px;
+    left: ${p => p.x}px;
+    position: absolute;
+`;
 
 const $ButtonContainer = styled.div`
+    cursor: pointer;
     position: absolute;
     top: ${props => props.y};
     left: ${props => props.x};
-    fill: pink;
 
     img {
         position: absolute;
 
         &.sticker {
             height: 75px;
-            color: pink;
         }
 
         &.buttonGuard {
@@ -34,6 +41,15 @@ const $ButtonContainer = styled.div`
 
     svg {
         fill: currentColor;
+        overflow: visible;
+    }
+
+    &:hover {
+        ${$StickerContainer} > svg {
+            stroke: white !important;
+            stroke-width: 35px;
+            stroke-linejoin: round;
+        }
     }
 `;
 
@@ -93,9 +109,28 @@ const $TextContainer = styled.div`
 `;
 
 class GSIButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            active: false
+        };
+    }
 
     render() {
-        const { side, row, buttonColor, stickerColor, textColor, text } = this.props;
+        const {
+            side,
+            row,
+            buttonColor,
+            stickerColor,
+            textColor,
+            text,
+            setColor,
+            setText,
+            index,
+            id,
+            active,
+            setActive
+        } = this.props;
         const sideText = side.charAt(0).toUpperCase() + side.slice(1);
         const Sticker = Stickers[`Row${row}${sideText}`];
         const Icon = Icons[stickerTexts[text].icon];
@@ -113,8 +148,24 @@ class GSIButton extends Component {
         const textOffsetY = config[`Row${row}`][`text${sideText}`].y;
 
         return (
-            <$ButtonContainer x={buttonX} y={buttonY} side={side}>
-                <Sticker style={{ color: stickerColor, top: offsetY, left: offsetX, position: "absolute" }} height={height} width={width} />
+            <$ButtonContainer
+                x={buttonX}
+                y={buttonY}
+                side={side}
+                onClick={(e) => {
+                    !active ? setActive(id) : setActive(-1);
+                    e.stopPropagation();
+                }}
+                textColor={textColor
+                }>
+                <$StickerContainer
+                    color={stickerColor}
+                    x={offsetX}
+                    y={offsetY}>
+                    <Sticker
+                        height={height}
+                        width={width} />
+                </$StickerContainer>
                 <img className="buttonGuard" src={`./images/buttons/button-guard.png`} alt='button-guard' />
                 <img src={`./images/buttons/btn-${buttonColor.toLowerCase()}-${side}.png`} alt='button sticker' />
                 <$TextContainer
@@ -154,7 +205,8 @@ class GSIButton extends Component {
                         )
                     }
                 </$TextContainer>
-                {row !== 1 && row !== 2 &&
+                {
+                    row !== 1 && row !== 2 &&
                     <$IconContainer
                         row={row}
                         posAbsolute={row !== 1}
@@ -163,7 +215,17 @@ class GSIButton extends Component {
                         <Icon height="15px" width="15px" color={textColor} />
                     </$IconContainer>
                 }
-            </$ButtonContainer>
+                <ButtonEditor
+                    active={active}
+                    buttonColor={buttonColor}
+                    stickerColor={stickerColor}
+                    textColor={textColor}
+                    text={text}
+                    setColor={setColor}
+                    setText={setText}
+                    index={index}
+                    side={side} />
+            </$ButtonContainer >
         );
     }
 }

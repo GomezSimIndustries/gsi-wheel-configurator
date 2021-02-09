@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ColorSelect = ({ setColor, number, color, colors }) => {
+const ColorSelect = ({ setColor, index, color, colors, type }) => {
 
     return (
         <select value={color} onChange={(e) => {
-            setColor(number, e.target.value);
+            setColor(type, index, e.target.value);
         }
         }>
             {colors.map((color, idx) => {
