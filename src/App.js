@@ -63,6 +63,10 @@ class GSIButtonConfig extends Component {
     super(props);
     this.state = {
       activeButtonId: -1,
+      activePreset: 'default',
+      imageSaveName: 'my-gsi-config',
+      configSaveName: 'my-gsi-config',
+      dashVersion: "default",
       buttons: [
         {
           id: 0,
@@ -205,7 +209,9 @@ class GSIButtonConfig extends Component {
     this.setRotaryColor = this.setRotaryColor.bind(this);
     this.setRotaryText = this.setRotaryText.bind(this);
     this.setActive = this.setActive.bind(this);
-    this.saveState = this.saveState.bind(this);
+    this.saveImage = this.saveImage.bind(this);
+    this.saveConfig = this.saveConfig.bind(this);
+    this.uploadConfig = this.uploadConfig.bind(this);
   }
 
   setColor(type, index, color) {
@@ -250,34 +256,93 @@ class GSIButtonConfig extends Component {
     this.setState({ activeButtonId: id });
   }
 
-  saveState() {
+  saveImage() {
     html2canvas(document.querySelector("#gsiConfig")).then(canvas => {
-      document.body.appendChild(canvas)
+      document.body.appendChild(canvas).id = 'gsiPicSave';
+      const picDiv = document.getElementById('gsiPicSave');
+      picDiv.style.display = "none";
+      picDiv.style.background = "none";
+      var a = document.createElement('a');
+      a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      a.download = `${this.state.imageSaveName}.png`;
+      a.click();
     });
-    const json = {
+  }
+
+  saveConfig() {
+    const json = JSON.stringify({
       buttons: this.state.buttons,
       rotaries: this.state.rotaries
-    }
+    });
+    var a = document.createElement('a');
+    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(json));
+    a.setAttribute('download', `${this.state.configSaveName}.json`);
+    a.click();
   }
+
+  uploadConfig() {
+    var files = document.getElementById('uploadConfig').files;
+    console.log(files);
+    if (files.length <= 0) {
+      return false;
+    }
+    const scope = this;
+
+    var fr = new FileReader();
+
+    fr.onload = function (e) {
+      console.log(e);
+      var result = JSON.parse(e.target.result);
+      var formatted = JSON.stringify(result, null, 2);
+      const jsonConfig = JSON.parse(formatted);
+      console.log(jsonConfig);
+      // document.getElementById('result').value = formatted;
+      scope.setState({ buttons: jsonConfig.buttons, rotaries: jsonConfig.rotaries });
+    };
+
+    fr.readAsText(files.item(0));
+  }
+
   render() {
     const presetKeys = Object.entries(presets);
     return (
       <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1 })}>
         <$ConfigLeft>
-          <button onClick={() => this.saveState()}>Save</button>
+          <label>GSI Presets:</label>
           <select onChange={e => {
             console.log(e.target.value, presets);
-            if(e.target.value !== 'none') {
+            if (e.target.value !== 'none') {
               this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
             }
           }}>
             <option value={'none'}>{'None'}</option>
-            {Object.keys(presets).map(key => 
+            {Object.keys(presets).map(key =>
               <option key={key} value={key}>
                 {presets[key].name}
               </option>
             )}
           </select>
+          <hr />
+          <label htmlFor="imageSaveName">{"Image Name:"}</label>
+          <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {
+            this.setState({ imageSaveName: e.target.value });
+          }} value={this.state.imageSaveName} />
+          <button onClick={() => this.saveImage()}>Save Image</button>
+          <hr />
+          <label htmlFor="configSaveName">{"Config Name:"}</label>
+          <input id="configSaveName" type="text" name="imageSaveName" onChange={e => {
+            this.setState({ configSaveName: e.target.value });
+          }} value={this.state.configSaveName} />
+          <button onClick={() => this.saveConfig()}>Save Config</button>
+          <hr />
+          <label htmlFor="uploadConfig">Upload Config:</label>
+          <input
+            type="file"
+            id="uploadConfig"
+            name="config"
+            accept="application/json"
+            onChange={e => this.uploadConfig()}></input>
+          {/* <button onClick={() => this.uploadConfig()}>Upload Config</button> */}
         </$ConfigLeft>
 
         <$ButtonsContainer id="gsiConfig">
