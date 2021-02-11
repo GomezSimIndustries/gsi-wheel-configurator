@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import GSIButton from './button/button';
 import GSIRotary from './rotary/rotary';
 import * as html2canvas from 'html2canvas';
+import { presets } from './config';
 import canvg from 'canvg';
 
 
@@ -258,12 +259,25 @@ class GSIButtonConfig extends Component {
       rotaries: this.state.rotaries
     }
   }
-
   render() {
+    const presetKeys = Object.entries(presets);
     return (
       <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1 })}>
         <$ConfigLeft>
           <button onClick={() => this.saveState()}>Save</button>
+          <select onChange={e => {
+            console.log(e.target.value, presets);
+            if(e.target.value !== 'none') {
+              this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
+            }
+          }}>
+            <option value={'none'}>{'None'}</option>
+            {Object.keys(presets).map(key => 
+              <option key={key} value={key}>
+                {presets[key].name}
+              </option>
+            )}
+          </select>
         </$ConfigLeft>
 
         <$ButtonsContainer id="gsiConfig">

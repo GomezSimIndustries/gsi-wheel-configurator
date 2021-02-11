@@ -47,7 +47,7 @@ const $ButtonContainer = styled.div`
     &:hover {
         ${$StickerContainer} > svg {
             stroke: white !important;
-            stroke-width: 35px;
+            stroke-width: 3px;
             stroke-linejoin: round;
         }
     }

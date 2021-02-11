@@ -34,7 +34,7 @@ const $RotaryContainer = styled.div`
     &:hover {
         svg {
             stroke: white;
-            stroke-width: 35px;
+            stroke-width: 3px;
             stroke-linejoin: round;
         }
     }

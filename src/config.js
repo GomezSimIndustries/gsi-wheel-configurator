@@ -396,3 +396,562 @@ export const config = {
         }
     }
 };
+
+export const presets = {
+    default: {
+        name: "GSI Default",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "red",
+                buttonColor: "red",
+                textColor: "white",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "purple",
+                buttonColor: "green",
+                textColor: "white",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "green",
+                buttonColor: "blue",
+                textColor: "black",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "white",
+                text: "volPlus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "purple",
+                buttonColor: "yellow",
+                textColor: "white",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "red",
+                buttonColor: "red",
+                textColor: "white",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "yellow",
+                buttonColor: "green",
+                textColor: "black",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "blue",
+                buttonColor: "blue",
+                textColor: "white",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "white",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "white",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "red",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "red",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "blue",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "menu"
+            }
+        ]
+    },
+    greenMachine: {
+        name: "Green Machine",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "green",
+                buttonColor: "black",
+                textColor: "black",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "green",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "menu"
+            }
+        ]
+    },
+    blackout: {
+        name: "Blackout",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "yellow",
+                buttonColor: "black",
+                textColor: "black",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "yellow",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "yellow",
+                buttonColor: "black",
+                textColor: "black",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "yellow",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "yellow",
+                buttonColor: "yellow",
+                textColor: "black",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "yellow",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "menu"
+            }
+        ]
+    },
+    mclaren: {
+        name: "Macca",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "blue",
+                buttonColor: "black",
+                textColor: "white",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "blue",
+                buttonColor: "black",
+                textColor: "white",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "blue",
+                buttonColor: "black",
+                textColor: "white",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "orange",
+                buttonColor: "black",
+                textColor: "black",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "blue",
+                buttonColor: "black",
+                textColor: "white",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "blue",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "orange",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "menu"
+            }
+        ]
+    }
+};
