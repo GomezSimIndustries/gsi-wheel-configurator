@@ -8,6 +8,33 @@ import canvg from 'canvg';
 
 
 import { RotaryBase, RotaryDir } from './stickers';
+import SaveControls from './save';
+
+const $Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+`;
+
+const $BottomControls = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
+
+const $SaveButton = styled.button`
+  padding: 16px;
+  background-color: #e61754;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: strong;
+  font-size: 32px;
+  color: white;
+`;
 
 const assetPath = process.env.PUBLIC_URL + '/assets/';
 const $ButtonsContainer = styled.div`
@@ -67,6 +94,7 @@ class GSIButtonConfig extends Component {
       imageSaveName: 'my-gsi-config',
       configSaveName: 'my-gsi-config',
       dashVersion: "default",
+      saveIsOpen: false,
       buttons: [
         {
           id: 0,
@@ -212,6 +240,9 @@ class GSIButtonConfig extends Component {
     this.saveImage = this.saveImage.bind(this);
     this.saveConfig = this.saveConfig.bind(this);
     this.uploadConfig = this.uploadConfig.bind(this);
+    this.openSave = this.openSave.bind(this);
+    this.onImageNameChange = this.onImageNameChange.bind(this);
+    this.onConfigNameChange = this.onConfigNameChange.bind(this);
   }
 
   setColor(type, index, color) {
@@ -303,90 +334,98 @@ class GSIButtonConfig extends Component {
     fr.readAsText(files.item(0));
   }
 
+  openSave() {
+    this.setState({ saveIsOpen: true });
+  }
+
+  onImageNameChange(val) {
+    this.setState({ imageSaveName: val });
+  }
+
+  onConfigNameChange(val) {
+    this.setState({ configSaveName: val });
+  }
+
   render() {
     const presetKeys = Object.entries(presets);
     return (
-      <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1 })}>
-        <$ConfigLeft>
-          <label>GSI Presets:</label>
-          <select onChange={e => {
-            console.log(e.target.value, presets);
-            if (e.target.value !== 'none') {
-              this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
-            }
-          }}>
-            <option value={'none'}>{'None'}</option>
-            {Object.keys(presets).map(key =>
-              <option key={key} value={key}>
-                {presets[key].name}
-              </option>
-            )}
-          </select>
-          <hr />
-          <label htmlFor="imageSaveName">{"Image Name:"}</label>
-          <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {
-            this.setState({ imageSaveName: e.target.value });
-          }} value={this.state.imageSaveName} />
-          <button onClick={() => this.saveImage()}>Save Image</button>
-          <hr />
-          <label htmlFor="configSaveName">{"Config Name:"}</label>
-          <input id="configSaveName" type="text" name="imageSaveName" onChange={e => {
-            this.setState({ configSaveName: e.target.value });
-          }} value={this.state.configSaveName} />
-          <button onClick={() => this.saveConfig()}>Save Config</button>
-          <hr />
-          <label htmlFor="uploadConfig">Upload Config:</label>
-          <input
-            type="file"
-            id="uploadConfig"
-            name="config"
-            accept="application/json"
-            onChange={e => this.uploadConfig()}></input>
-          {/* <button onClick={() => this.uploadConfig()}>Upload Config</button> */}
-        </$ConfigLeft>
+      <$Container>
+        <SaveControls
+          saveConfig={this.saveConfig}
+          saveImage={this.saveImage}
+          imageSaveName={this.state.imageSaveName}
+          configSaveName={this.state.configSaveName}
+          onImageNameChange={this.onImageNameChange}
+          onConfigNameChange={this.onConfigNameChange}
+          uploadConfig={this.uploadConfig}
+          active={this.state.saveIsOpen}
+          saveConfig={this.saveConfig}
+        />
+        <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
+          <$ConfigLeft>
+            <label>GSI Presets:</label>
+            <select onChange={e => {
+              console.log(e.target.value, presets);
+              if (e.target.value !== 'none') {
+                this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
+              }
+            }}>
+              <option value={'none'}>{'None'}</option>
+              {Object.keys(presets).map(key =>
+                <option key={key} value={key}>
+                  {presets[key].name}
+                </option>
+              )}
+            </select>
+          </$ConfigLeft>
 
-        <$ButtonsContainer id="gsiConfig">
-          <img src={'./images/fpe-trans-buttons-base.png'} alt='button base' />
-          {this.state.buttons.map((btn, idx) =>
-            <GSIButton
-              key={`btn-${idx}-${btn.row}-${btn.side}`}
-              index={idx}
-              id={btn.id}
-              stickerColor={btn.stickerColor}
-              buttonColor={btn.buttonColor}
-              textColor={btn.textColor}
-              text={btn.text}
-              row={btn.row}
-              side={btn.side}
-              setColor={this.setColor}
-              setText={this.setText}
-              active={this.state.activeButtonId === btn.id}
-              setActive={this.setActive}
-            />
-          )}
-          <$RotaryContainer>
-            <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
-            <RotaryDir width="114px" height="69px" style={{ left: "95px", top: "21px", color: "white" }} />
-            {this.state.rotaries.map((rot, idx) =>
-              <GSIRotary
-                key={`rotary-${idx}`}
+          <$ButtonsContainer id="gsiConfig">
+            <img src={'./images/fpe-trans-buttons-base.png'} alt='button base' />
+            {this.state.buttons.map((btn, idx) =>
+              <GSIButton
+                key={`btn-${idx}-${btn.row}-${btn.side}`}
                 index={idx}
-                id={rot.id}
-                stickerColor={rot.stickerColor}
-                text={rot.text}
-                textColor={rot.textColor}
-                rotaryColor={rot.rotaryColor}
-                active={this.state.activeButtonId === rot.id}
-                setColor={this.setRotaryColor}
-                setText={this.setRotaryText}
+                id={btn.id}
+                stickerColor={btn.stickerColor}
+                buttonColor={btn.buttonColor}
+                textColor={btn.textColor}
+                text={btn.text}
+                row={btn.row}
+                side={btn.side}
+                setColor={this.setColor}
+                setText={this.setText}
+                active={this.state.activeButtonId === btn.id}
                 setActive={this.setActive}
               />
             )}
-          </$RotaryContainer>
-        </$ButtonsContainer>
-        <$ConfigRight>
-        </$ConfigRight>
-      </$ConfigContainer >
+            <$RotaryContainer>
+              <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
+              <RotaryDir width="114px" height="69px" style={{ left: "95px", top: "21px", color: "white" }} />
+              {this.state.rotaries.map((rot, idx) =>
+                <GSIRotary
+                  key={`rotary-${idx}`}
+                  index={idx}
+                  id={rot.id}
+                  stickerColor={rot.stickerColor}
+                  text={rot.text}
+                  textColor={rot.textColor}
+                  rotaryColor={rot.rotaryColor}
+                  active={this.state.activeButtonId === rot.id}
+                  setColor={this.setRotaryColor}
+                  setText={this.setRotaryText}
+                  setActive={this.setActive}
+                />
+              )}
+            </$RotaryContainer>
+          </$ButtonsContainer>
+          <$ConfigRight>
+          </$ConfigRight>
+        </$ConfigContainer >
+
+        <$BottomControls>
+          <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>
+        </$BottomControls>
+      </$Container>
     );
   }
 }

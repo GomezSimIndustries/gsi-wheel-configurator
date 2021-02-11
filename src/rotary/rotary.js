@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import { rotaryConfig } from '../config';
+import { rotaryConfig, rotaryTexts } from '../config';
 import * as Stickers from '../stickers';
 import RotaryEditor from './rotary-editor';
 
@@ -86,14 +86,16 @@ class GSIRotary extends Component {
         }
         let x = rotaryConfig[index].x;
         let y = rotaryConfig[index].y;
-        let image = `./images/buttons/rotary-${rotaryColor.toLowerCase()}.png`;
+        let image = `./images/buttons/rotary_${rotaryColor.toLowerCase()}.png`;
         if (index === 0) {
-            image = `./images/buttons/funky-${rotaryColor.toLowerCase()}.png`;
+            image = `./images/buttons/funky_${rotaryColor.toLowerCase()}.png`;
         }
         let side = 'right';
         if (index === 0 || index === 1 || index === 2 || index === 4) {
             side = 'left';
         }
+        console.log(rotaryTexts);
+        console.log(text);
         return (
             <$RotaryContainer
                 x={x}
@@ -114,13 +116,13 @@ class GSIRotary extends Component {
                         height={rotaryConfig[index].sticker.height}
                     />
                 </$StickerContainer>
-                <img src={image} alt='rotary dial' />
+                <img src={image} alt='rotary dial' style={{ height: direction.toLowerCase() === 'funky' ? "42px" : "73px", width: direction.toLowerCase() === 'funky' ? "42px" : "73px" }}/>
                 {index !== 2 && (
                     <$TextContainer
                     x={rotaryConfig[index].text.x}
                     y={rotaryConfig[index].text.y}
                     color={textColor}>
-                        {text}
+                        {rotaryTexts[text].text}
                     </$TextContainer>
                 )}
                 <RotaryEditor
@@ -129,7 +131,7 @@ class GSIRotary extends Component {
                     rotaryColor={rotaryColor}
                     stickerColor={stickerColor}
                     textColor={textColor}
-                    text={text}
+                    text={rotaryTexts[text].text}
                     setColor={setColor}
                     setText={setText}
                     index={index}

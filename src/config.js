@@ -54,6 +54,9 @@ export const rotaryTexts = {
     menu: {
         text: 'MENU'
     },
+    multi: {
+        text: "MULTI"
+    }
 };
 
 export const funkyColors = [
@@ -143,7 +146,7 @@ export const rotaryConfig = [
             width: 114,
             height: 88,
             x: -20,
-            y: -5
+            y: -7
         },
         dir: 'center'
     },
@@ -164,31 +167,31 @@ export const rotaryConfig = [
     },
     {
         x: "41",
-        y: "109",
+        y: "111",
         text: {
             x: -34,
-            y: -5
+            y: -8
         },
         sticker: {
             width: 114,
             height: 88,
             x: -33,
-            y: -6
+            y: -8
         },
         dir: 'left'
     },
     {
         x: "189",
-        y: "109",
+        y: "111",
         text: {
             x: 58,
-            y: -5
+            y: -8
         },
         sticker: {
             width: 114,
             height: 88,
             x: -8,
-            y: -6
+            y: -8
         },
         dir: 'right'
     }

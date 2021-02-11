@@ -167,7 +167,8 @@ class GSIButton extends Component {
                         width={width} />
                 </$StickerContainer>
                 <img className="buttonGuard" src={`./images/buttons/button-guard.png`} alt='button-guard' />
-                <img src={`./images/buttons/btn-${buttonColor.toLowerCase()}-${side}.png`} alt='button sticker' />
+                <img src={`./images/buttons/button_${buttonColor.toLowerCase()}.png`} alt='button sticker'
+                style={{ width: '41px', height: '41px'}} />
                 <$TextContainer
                     offsetX={textOffsetX}
                     offsetY={textOffsetY}

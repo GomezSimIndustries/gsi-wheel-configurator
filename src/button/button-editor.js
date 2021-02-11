@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import ColorSelect from '../color-select';
 import TextSelect from '../text-select';
 import { buttonColors, stickerColors, textColors, stickerTexts } from '../config';
+import { SketchPicker } from 'react-color';
 
 const $EditorContainer = styled.div`
     position: absolute;
@@ -44,39 +45,40 @@ class ButtonEditor extends Component {
                 <$ButtonSelectGroup>
                     {'Button Color: '}
                     <ColorSelect
-                    setColor={setColor}
-                    index={index}
-                    color={buttonColor}
-                    colors={buttonColors}
-                    type={'buttonColor'} />
+                        setColor={setColor}
+                        index={index}
+                        color={buttonColor}
+                        colors={buttonColors}
+                        type={'buttonColor'} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Sticker Color: '}
-                    <ColorSelect
-                    setColor={setColor}
-                    value={stickerColor}
-                    index={index}
-                    color={stickerColor}
-                    colors={stickerColors}
-                    type={'stickerColor'} />
+                    <SketchPicker
+                        color={stickerColor}
+                        disableAlpha={true}
+                        presetColors={stickerColors}
+                        onChange={e => {
+                            console.log(e);
+                            setColor('stickerColor', index, e.hex);
+                        }} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Text Color: '}
                     <ColorSelect
-                    setColor={setColor}
-                    value={textColor}
-                    index={index}
-                    color={textColor}
-                    colors={textColors}
-                    type={'textColor'} />
+                        setColor={setColor}
+                        value={textColor}
+                        index={index}
+                        color={textColor}
+                        colors={textColors}
+                        type={'textColor'} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Function: '}
                     <TextSelect setText={setText}
-                    value={text}
-                    index={index}
-                    text={text}
-                    texts={stickerTexts} />
+                        value={text}
+                        index={index}
+                        text={text}
+                        texts={stickerTexts} />
                 </$ButtonSelectGroup>
             </$EditorContainer>
         );
