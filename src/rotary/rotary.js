@@ -74,7 +74,8 @@ class GSIRotary extends Component {
             setText,
             active,
             setActive,
-            setColor
+            setColor,
+            copyRotaryAll
         } = this.props;
         let RotarySticker = Stickers.RotaryRight;
         let direction = rotaryConfig[index].dir;
@@ -135,7 +136,8 @@ class GSIRotary extends Component {
                     setColor={setColor}
                     setText={setText}
                     index={index}
-                    side={side} />
+                    side={side}
+                    copyRotaryAll={copyRotaryAll} />
             </$RotaryContainer>
         );
     }

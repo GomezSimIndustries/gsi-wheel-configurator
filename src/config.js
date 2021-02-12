@@ -406,7 +406,7 @@ export const presets = {
         buttons: [
             {
                 id: 0,
-                stickerColor: "red",
+                stickerColor: "#E9262A",
                 buttonColor: "red",
                 textColor: "white",
                 text: "flash",
@@ -415,7 +415,7 @@ export const presets = {
             },
             {
                 id: 1,
-                stickerColor: "purple",
+                stickerColor: "#8C3F98",
                 buttonColor: "green",
                 textColor: "white",
                 text: "enable",
@@ -424,7 +424,7 @@ export const presets = {
             },
             {
                 id: 2,
-                stickerColor: "green",
+                stickerColor: "#2AB674",
                 buttonColor: "blue",
                 textColor: "black",
                 text: "mute",
@@ -433,7 +433,7 @@ export const presets = {
             },
             {
                 id: 3,
-                stickerColor: "orange",
+                stickerColor: "#F89521",
                 buttonColor: "black",
                 textColor: "white",
                 text: "volPlus",
@@ -442,7 +442,7 @@ export const presets = {
             },
             {
                 id: 4,
-                stickerColor: "purple",
+                stickerColor: "#8C3F98",
                 buttonColor: "yellow",
                 textColor: "white",
                 text: "prev",
@@ -451,7 +451,7 @@ export const presets = {
             },
             {
                 id: 5,
-                stickerColor: "red",
+                stickerColor: "#E9262A",
                 buttonColor: "red",
                 textColor: "white",
                 text: "pitLimit",
@@ -460,7 +460,7 @@ export const presets = {
             },
             {
                 id: 6,
-                stickerColor: "yellow",
+                stickerColor: "#FCEE23",
                 buttonColor: "green",
                 textColor: "black",
                 text: "radio",
@@ -469,7 +469,7 @@ export const presets = {
             },
             {
                 id: 7,
-                stickerColor: "blue",
+                stickerColor: "#4888C8",
                 buttonColor: "blue",
                 textColor: "white",
                 text: "reset",
@@ -478,7 +478,7 @@ export const presets = {
             },
             {
                 id: 8,
-                stickerColor: "green",
+                stickerColor: "#2AB674",
                 buttonColor: "black",
                 textColor: "white",
                 text: "volPlus",
@@ -487,7 +487,7 @@ export const presets = {
             },
             {
                 id: 9,
-                stickerColor: "white",
+                stickerColor: "#BEBEC0",
                 buttonColor: "yellow",
                 textColor: "black",
                 text: "next",
@@ -498,42 +498,42 @@ export const presets = {
         rotaries: [
             {
                 id: 10,
-                stickerColor: "red",
+                stickerColor: "#E9262A",
                 rotaryColor: "black",
                 textColor: "white",
                 text: "multi"
             },
             {
                 id: 11,
-                stickerColor: "red",
+                stickerColor: "#E9262A",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "bias"
             },
             {
                 id: 12,
-                stickerColor: "orange",
+                stickerColor: "#F47522",
                 rotaryColor: "black",
                 textColor: "white",
                 text: "scroll"
             },
             {
                 id: 13,
-                stickerColor: "green",
+                stickerColor: "#3EB449",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "scroll"
             },
             {
                 id: 14,
-                stickerColor: "yellow",
+                stickerColor: "#FCEE23",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "option"
             },
             {
                 id: 15,
-                stickerColor: "blue",
+                stickerColor: "#2DA9E1",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "menu"
@@ -545,7 +545,7 @@ export const presets = {
         buttons: [
             {
                 id: 0,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "flash",
@@ -554,7 +554,7 @@ export const presets = {
             },
             {
                 id: 1,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "enable",
@@ -563,7 +563,7 @@ export const presets = {
             },
             {
                 id: 2,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "mute",
@@ -572,7 +572,7 @@ export const presets = {
             },
             {
                 id: 3,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "volPlus",
@@ -581,7 +581,7 @@ export const presets = {
             },
             {
                 id: 4,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "prev",
@@ -590,7 +590,7 @@ export const presets = {
             },
             {
                 id: 5,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "pitLimit",
@@ -599,7 +599,7 @@ export const presets = {
             },
             {
                 id: 6,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "radio",
@@ -608,7 +608,7 @@ export const presets = {
             },
             {
                 id: 7,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "reset",
@@ -617,7 +617,7 @@ export const presets = {
             },
             {
                 id: 8,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "volPlus",
@@ -626,7 +626,7 @@ export const presets = {
             },
             {
                 id: 9,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
                 text: "next",
@@ -637,42 +637,42 @@ export const presets = {
         rotaries: [
             {
                 id: 10,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "multi"
             },
             {
                 id: 11,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "bias"
             },
             {
                 id: 12,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "scroll"
             },
             {
                 id: 13,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "scroll"
             },
             {
                 id: 14,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "option"
             },
             {
                 id: 15,
-                stickerColor: "green",
+                stickerColor: "#8dd46c",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "menu"
@@ -823,7 +823,7 @@ export const presets = {
         buttons: [
             {
                 id: 0,
-                stickerColor: "blue",
+                stickerColor: "#0059a6",
                 buttonColor: "black",
                 textColor: "white",
                 text: "flash",
@@ -832,7 +832,7 @@ export const presets = {
             },
             {
                 id: 1,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "enable",
@@ -841,7 +841,7 @@ export const presets = {
             },
             {
                 id: 2,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "mute",
@@ -850,7 +850,7 @@ export const presets = {
             },
             {
                 id: 3,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "volPlus",
@@ -859,7 +859,7 @@ export const presets = {
             },
             {
                 id: 4,
-                stickerColor: "blue",
+                stickerColor: "#0059a6",
                 buttonColor: "black",
                 textColor: "white",
                 text: "prev",
@@ -868,7 +868,7 @@ export const presets = {
             },
             {
                 id: 5,
-                stickerColor: "blue",
+                stickerColor: "#0059a6",
                 buttonColor: "black",
                 textColor: "white",
                 text: "pitLimit",
@@ -877,7 +877,7 @@ export const presets = {
             },
             {
                 id: 6,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "radio",
@@ -886,7 +886,7 @@ export const presets = {
             },
             {
                 id: 7,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "reset",
@@ -895,7 +895,7 @@ export const presets = {
             },
             {
                 id: 8,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
                 text: "volPlus",
@@ -904,7 +904,7 @@ export const presets = {
             },
             {
                 id: 9,
-                stickerColor: "blue",
+                stickerColor: "#0059a6",
                 buttonColor: "black",
                 textColor: "white",
                 text: "next",
@@ -915,42 +915,42 @@ export const presets = {
         rotaries: [
             {
                 id: 10,
-                stickerColor: "blue",
+                stickerColor: "#0059a6",
                 rotaryColor: "black",
                 textColor: "white",
                 text: "multi"
             },
             {
                 id: 11,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "bias"
             },
             {
                 id: 12,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "scroll"
             },
             {
                 id: 13,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "scroll"
             },
             {
                 id: 14,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "option"
             },
             {
                 id: 15,
-                stickerColor: "orange",
+                stickerColor: "#ff8700",
                 rotaryColor: "black",
                 textColor: "black",
                 text: "menu"

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import * as Stickers from '../stickers';
-import * as Icons from '../icons';
 import ColorSelect from '../color-select';
 import TextSelect from '../text-select';
 import { funkyColors, rotaryColors, rotaryStickerColors, textColors, rotaryTexts } from '../config';
+import { SketchPicker } from 'react-color';
 
 const $EditorContainer = styled.div`
     position: absolute;
@@ -40,47 +39,52 @@ class RotaryEditor extends Component {
             setText,
             index,
             side,
-            id
+            copyRotaryAll
         } = this.props;
         return (
             <$EditorContainer active={active} side={side} onClick={(e) => e.stopPropagation()}>
                 <$ButtonSelectGroup>
                     {'Knob Color: '}
                     <ColorSelect
-                    setColor={setColor}
-                    index={index}
-                    color={rotaryColor}
-                    colors={index === 0 ? funkyColors : rotaryColors}
-                    type={'rotaryColor'} />
+                        setColor={setColor}
+                        index={index}
+                        color={rotaryColor}
+                        colors={index === 0 ? funkyColors : rotaryColors}
+                        type={'rotaryColor'} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Sticker Color: '}
-                    <ColorSelect
-                    setColor={setColor}
-                    value={stickerColor}
-                    index={index}
-                    color={stickerColor}
-                    colors={rotaryStickerColors}
-                    type={'stickerColor'} />
+                    <SketchPicker
+                        color={stickerColor}
+                        disableAlpha={true}
+                        presetColors={rotaryStickerColors}
+                        onChange={color => {
+                            setColor('stickerColor', index, color.hex);
+                        }} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Text Color: '}
                     <ColorSelect
-                    setColor={setColor}
-                    value={textColor}
-                    index={index}
-                    color={textColor}
-                    colors={textColors}
-                    type={'textColor'} />
+                        setColor={setColor}
+                        value={textColor}
+                        index={index}
+                        color={textColor}
+                        colors={textColors}
+                        type={'textColor'} />
                 </$ButtonSelectGroup>
                 <$ButtonSelectGroup>
                     {'Function: '}
                     <TextSelect setText={setText}
-                    value={text}
-                    index={index}
-                    text={text}
-                    texts={rotaryTexts} />
+                        value={text}
+                        index={index}
+                        text={text}
+                        texts={rotaryTexts} />
                 </$ButtonSelectGroup>
+                <hr />
+                <button onClick={e => {
+                    console.log('copy clicked');
+                    copyRotaryAll(index);
+                }}>Apply colors to all rotaries</button>
             </$EditorContainer>
         );
     }

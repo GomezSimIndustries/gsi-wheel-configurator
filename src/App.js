@@ -91,7 +91,7 @@ class GSIButtonConfig extends Component {
     this.state = {
       activeButtonId: -1,
       activePreset: 'default',
-      imageSaveName: 'my-gsi-config',
+      imageSaveName: 'my-gsi-image',
       configSaveName: 'my-gsi-config',
       dashVersion: "default",
       saveIsOpen: false,
@@ -243,6 +243,9 @@ class GSIButtonConfig extends Component {
     this.openSave = this.openSave.bind(this);
     this.onImageNameChange = this.onImageNameChange.bind(this);
     this.onConfigNameChange = this.onConfigNameChange.bind(this);
+    this.copyButtonAll = this.copyButtonAll.bind(this);
+    this.copyButtonRow = this.copyButtonRow.bind(this);
+    this.copyRotaryAll = this.copyRotaryAll.bind(this);
   }
 
   setColor(type, index, color) {
@@ -313,7 +316,6 @@ class GSIButtonConfig extends Component {
 
   uploadConfig() {
     var files = document.getElementById('uploadConfig').files;
-    console.log(files);
     if (files.length <= 0) {
       return false;
     }
@@ -322,12 +324,10 @@ class GSIButtonConfig extends Component {
     var fr = new FileReader();
 
     fr.onload = function (e) {
-      console.log(e);
       var result = JSON.parse(e.target.result);
       var formatted = JSON.stringify(result, null, 2);
       const jsonConfig = JSON.parse(formatted);
       console.log(jsonConfig);
-      // document.getElementById('result').value = formatted;
       scope.setState({ buttons: jsonConfig.buttons, rotaries: jsonConfig.rotaries });
     };
 
@@ -344,6 +344,40 @@ class GSIButtonConfig extends Component {
 
   onConfigNameChange(val) {
     this.setState({ configSaveName: val });
+  }
+
+  copyButtonAll(index) {
+    console.log('handler');
+    const newBtns = this.state.buttons.map(btn => {
+      return { ...btn, stickerColor: this.state.buttons[index].stickerColor, buttonColor: this.state.buttons[index].buttonColor }
+    });
+    this.setState({ buttons: newBtns });
+  }
+
+  copyButtonRow(index) {
+    let newButtons = [...this.state.buttons];
+    let newIndex = 0;
+    if (index > 4) {
+      newIndex = index - 5;
+    } else {
+      newIndex = index + 5;
+    }
+    newButtons[newIndex].buttonColor = newButtons[index].buttonColor;
+    newButtons[newIndex].stickerColor = newButtons[index].stickerColor;
+    this.setState({ buttons: newButtons });
+  }
+
+  copyRotaryAll(index) {
+    const rotaryId = this.state.rotaries[0].id;
+    console.log("copy rotary");
+    let newRotaries = this.state.rotaries.map(rot => {
+      if (rotaryId === rot.id) {
+        return { ...rot, stickerColor: this.state.rotaries[index].stickerColor }
+      }
+      return { ...rot, stickerColor: this.state.rotaries[index].stickerColor, rotaryColor: this.state.rotaries[index].rotaryColor }
+    });
+
+    this.setState({ rotaries: newRotaries });
   }
 
   render() {
@@ -396,6 +430,8 @@ class GSIButtonConfig extends Component {
                 setText={this.setText}
                 active={this.state.activeButtonId === btn.id}
                 setActive={this.setActive}
+                copyButtonAll={this.copyButtonAll}
+                copyButtonRow={this.copyButtonRow}
               />
             )}
             <$RotaryContainer>
@@ -414,6 +450,7 @@ class GSIButtonConfig extends Component {
                   setColor={this.setRotaryColor}
                   setText={this.setRotaryText}
                   setActive={this.setActive}
+                  copyRotaryAll={this.copyRotaryAll}
                 />
               )}
             </$RotaryContainer>

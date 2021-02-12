@@ -38,7 +38,9 @@ class ButtonEditor extends Component {
             setColor,
             setText,
             index,
-            side
+            side,
+            copyButtonAll,
+            copyButtonRow
         } = this.props;
         return (
             <$EditorContainer active={active} side={side} onClick={(e) => e.stopPropagation()}>
@@ -58,7 +60,6 @@ class ButtonEditor extends Component {
                         disableAlpha={true}
                         presetColors={stickerColors}
                         onChange={e => {
-                            console.log(e);
                             setColor('stickerColor', index, e.hex);
                         }} />
                 </$ButtonSelectGroup>
@@ -80,6 +81,13 @@ class ButtonEditor extends Component {
                         text={text}
                         texts={stickerTexts} />
                 </$ButtonSelectGroup>
+                <hr />
+                <button onClick={e => {
+                    copyButtonAll(index);
+                }}>Apply colors to all buttons</button>
+                <button onClick={e => {
+                    copyButtonRow(index);
+                }}>Apply colors to row</button>
             </$EditorContainer>
         );
     }

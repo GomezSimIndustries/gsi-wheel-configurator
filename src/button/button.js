@@ -129,7 +129,9 @@ class GSIButton extends Component {
             index,
             id,
             active,
-            setActive
+            setActive,
+            copyButtonAll,
+            copyButtonRow
         } = this.props;
         const sideText = side.charAt(0).toUpperCase() + side.slice(1);
         const Sticker = Stickers[`Row${row}${sideText}`];
@@ -225,7 +227,9 @@ class GSIButton extends Component {
                     setColor={setColor}
                     setText={setText}
                     index={index}
-                    side={side} />
+                    side={side}
+                    copyButtonAll={copyButtonAll}
+                    copyButtonRow={copyButtonRow} />
             </$ButtonContainer >
         );
     }
