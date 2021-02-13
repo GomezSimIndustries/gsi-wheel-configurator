@@ -402,7 +402,7 @@ export const config = {
 
 export const presets = {
     default: {
-        name: "GSI Default",
+        name: "GSI Stock",
         buttons: [
             {
                 id: 0,

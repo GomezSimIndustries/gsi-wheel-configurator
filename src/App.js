@@ -246,6 +246,9 @@ class GSIButtonConfig extends Component {
     this.copyButtonAll = this.copyButtonAll.bind(this);
     this.copyButtonRow = this.copyButtonRow.bind(this);
     this.copyRotaryAll = this.copyRotaryAll.bind(this);
+    this.loadPreset = this.loadPreset.bind(this);
+
+    this.loadPreset('default');
   }
 
   setColor(type, index, color) {
@@ -349,7 +352,7 @@ class GSIButtonConfig extends Component {
   copyButtonAll(index) {
     console.log('handler');
     const newBtns = this.state.buttons.map(btn => {
-      return { ...btn, stickerColor: this.state.buttons[index].stickerColor, buttonColor: this.state.buttons[index].buttonColor }
+      return { ...btn, stickerColor: this.state.buttons[index].stickerColor, buttonColor: this.state.buttons[index].buttonColor, textColor: this.state.buttons[index].textColor }
     });
     this.setState({ buttons: newBtns });
   }
@@ -364,6 +367,7 @@ class GSIButtonConfig extends Component {
     }
     newButtons[newIndex].buttonColor = newButtons[index].buttonColor;
     newButtons[newIndex].stickerColor = newButtons[index].stickerColor;
+    newButtons[newIndex].textColor = newButtons[index].textColor;
     this.setState({ buttons: newButtons });
   }
 
@@ -372,12 +376,16 @@ class GSIButtonConfig extends Component {
     console.log("copy rotary");
     let newRotaries = this.state.rotaries.map(rot => {
       if (rotaryId === rot.id) {
-        return { ...rot, stickerColor: this.state.rotaries[index].stickerColor }
+        return { ...rot, stickerColor: this.state.rotaries[index].stickerColor, textColor: this.state.rotaries[index].textColor }
       }
-      return { ...rot, stickerColor: this.state.rotaries[index].stickerColor, rotaryColor: this.state.rotaries[index].rotaryColor }
+      return { ...rot, stickerColor: this.state.rotaries[index].stickerColor, rotaryColor: this.state.rotaries[index].rotaryColor, textColor: this.state.rotaries[index].textColor }
     });
 
     this.setState({ rotaries: newRotaries });
+  }
+
+  loadPreset(preset) {
+    this.setState({ buttons: presets[preset].buttons, rotaries: presets[preset].rotaries });
   }
 
   render() {
@@ -404,7 +412,6 @@ class GSIButtonConfig extends Component {
                 this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
               }
             }}>
-              <option value={'none'}>{'None'}</option>
               {Object.keys(presets).map(key =>
                 <option key={key} value={key}>
                   {presets[key].name}

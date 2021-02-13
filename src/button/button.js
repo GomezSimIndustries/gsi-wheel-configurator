@@ -170,7 +170,7 @@ class GSIButton extends Component {
                 </$StickerContainer>
                 <img className="buttonGuard" src={`./images/buttons/button-guard.png`} alt='button-guard' />
                 <img src={`./images/buttons/button_${buttonColor.toLowerCase()}.png`} alt='button sticker'
-                style={{ width: '41px', height: '41px'}} />
+                    style={{ width: '41px', height: '41px' }} />
                 <$TextContainer
                     offsetX={textOffsetX}
                     offsetY={textOffsetY}
@@ -229,7 +229,9 @@ class GSIButton extends Component {
                     index={index}
                     side={side}
                     copyButtonAll={copyButtonAll}
-                    copyButtonRow={copyButtonRow} />
+                    copyButtonRow={copyButtonRow}
+                    row={row}
+                />
             </$ButtonContainer >
         );
     }
