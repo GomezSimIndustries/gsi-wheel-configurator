@@ -4,7 +4,15 @@ import ColorSelect from '../color-select';
 import TextSelect from '../text-select';
 import { funkyColors, rotaryColors, rotaryStickerColors, textColors, rotaryTexts } from '../config';
 import { SketchPicker } from 'react-color';
-import { $ElementContainer, $GroupContainer, $RowContainer } from '../button/button-editor'
+import {
+    $ElementContainer,
+    $GroupContainer,
+    $RowContainer,
+    $CloseButton,
+    $ColorSwatchButton,
+    $HexValue,
+    $ColorPickerContainer
+} from '../button/button-editor'
 
 const $EditorContainer = styled.div`
     transform: translateY(-50%);
@@ -51,6 +59,29 @@ const $ButtonSelectGroup = styled.div`
 
 class RotaryEditor extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            pickerOpen: false,
+        };
+        this.togglePicker = this.togglePicker.bind(this);
+    }
+
+    togglePicker(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        this.setState({
+            pickerOpen: !this.state.pickerOpen
+        });
+    }
+
+    componentDidUpdate(oldProps, oldState) {
+        if (oldProps.active && !this.props.active) {
+            if (this.state.pickerOpen)
+                this.setState({ pickerOpen: false });
+        }
+    }
+
     render() {
         const {
             rotaryColor,
@@ -62,13 +93,15 @@ class RotaryEditor extends Component {
             setText,
             index,
             side,
-            copyRotaryAll
+            copyRotaryAll,
+            setActive
         } = this.props;
         return (
             <$EditorContainer
                 active={active}
                 side={side}
                 onClick={(e) => e.stopPropagation()}>
+                <$CloseButton onClick={e => setActive(-1)}>x</$CloseButton>
                 <$GroupContainer>
                     <span>Colors</span>
                     <$RowContainer>
@@ -94,18 +127,24 @@ class RotaryEditor extends Component {
                     </$RowContainer>
                     <$ElementContainer>
                         <span>Sticker</span>
-                        <SketchPicker
-                            color={stickerColor}
-                            disableAlpha={true}
-                            presetColors={rotaryStickerColors}
-                            onChange={color => {
-                                setColor('stickerColor', index, color.hex);
-                            }} />
+                        <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
+                        <$HexValue>Value: {stickerColor}</$HexValue>
+                        <$ColorPickerContainer
+                            open={this.state.pickerOpen}
+                            id="sketchPicker">
+                            <SketchPicker
+                                color={stickerColor}
+                                disableAlpha={true}
+                                presetColors={rotaryStickerColors}
+                                onChange={color => {
+                                    setColor('stickerColor', index, color.hex);
+                                }} />
+                            <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
+                        </$ColorPickerContainer>
                     </$ElementContainer>
                     <$GroupContainer>
                         <span>Apply Colors To</span>
                         <button onClick={e => {
-                            console.log('copy clicked');
                             copyRotaryAll(index);
                         }}>All Rotaries</button>
                     </$GroupContainer>

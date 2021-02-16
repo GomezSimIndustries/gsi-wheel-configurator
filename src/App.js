@@ -4,8 +4,6 @@ import GSIButton from './button/button';
 import GSIRotary from './rotary/rotary';
 import * as html2canvas from 'html2canvas';
 import { presets } from './config';
-import canvg from 'canvg';
-
 
 import { RotaryBase, RotaryDir } from './stickers';
 import SaveControls from './save';
@@ -39,6 +37,12 @@ const $SaveButton = styled.button`
 const assetPath = process.env.PUBLIC_URL + '/assets/';
 const $ButtonsContainer = styled.div`
   position: relative;
+  & > img {
+    -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+    filter: url(#drop-shadow);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
+  }
 `;
 const $ConfigContainer = styled.div`
   position: relative;
@@ -63,18 +67,6 @@ const $ConfigRight = styled.div`
   width: 200px;
 `;
 
-const $LeftButtons = styled.div`
-
-`;
-const $RightButtons = styled.div`
-
-`;
-
-
-const $ButtonSelectGroup = styled.div`
-
-`;
-
 const $RotaryContainer = styled.div`
   position: absolute;
   left: 315px;
@@ -95,142 +87,8 @@ class GSIButtonConfig extends Component {
       configSaveName: 'my-gsi-config',
       dashVersion: "default",
       saveIsOpen: false,
-      buttons: [
-        {
-          id: 0,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "flash",
-          row: 1,
-          side: "left"
-        },
-        {
-          id: 1,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "enable",
-          row: 2,
-          side: "left"
-        },
-        {
-          id: 2,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "mute",
-          row: 3,
-          side: "left"
-        },
-        {
-          id: 3,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "volPlus",
-          row: 4,
-          side: "left"
-        },
-        {
-          id: 4,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "prev",
-          row: 5,
-          side: "left"
-        },
-        {
-          id: 5,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "pitLimit",
-          row: 1,
-          side: "right"
-        },
-        {
-          id: 6,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "radio",
-          row: 2,
-          side: "right"
-        },
-        {
-          id: 7,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "reset",
-          row: 3,
-          side: "right"
-        },
-        {
-          id: 8,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "volPlus",
-          row: 4,
-          side: "right"
-        },
-        {
-          id: 9,
-          stickerColor: "red",
-          buttonColor: "black",
-          textColor: "white",
-          text: "next",
-          row: 5,
-          side: "right"
-        },
-      ],
-      rotaries: [
-        {
-          id: 10,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "multi",
-        },
-        {
-          id: 11,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "bias",
-        },
-        {
-          id: 12,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "scroll",
-        },
-        {
-          id: 13,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "scroll",
-        },
-        {
-          id: 14,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "option",
-        },
-        {
-          id: 15,
-          stickerColor: "red",
-          rotaryColor: "black",
-          textColor: "white",
-          text: "menu",
-        },
-      ]
+      buttons: presets.default.buttons,
+      rotaries: presets.default.rotaries
     };
     this.setColor = this.setColor.bind(this);
     this.setText = this.setText.bind(this);
@@ -330,7 +188,6 @@ class GSIButtonConfig extends Component {
       var result = JSON.parse(e.target.result);
       var formatted = JSON.stringify(result, null, 2);
       const jsonConfig = JSON.parse(formatted);
-      console.log(jsonConfig);
       scope.setState({ buttons: jsonConfig.buttons, rotaries: jsonConfig.rotaries });
     };
 
@@ -350,7 +207,6 @@ class GSIButtonConfig extends Component {
   }
 
   copyButtonAll(index) {
-    console.log('handler');
     const newBtns = this.state.buttons.map(btn => {
       return { ...btn, stickerColor: this.state.buttons[index].stickerColor, buttonColor: this.state.buttons[index].buttonColor, textColor: this.state.buttons[index].textColor }
     });
@@ -373,7 +229,6 @@ class GSIButtonConfig extends Component {
 
   copyRotaryAll(index) {
     const rotaryId = this.state.rotaries[0].id;
-    console.log("copy rotary");
     let newRotaries = this.state.rotaries.map(rot => {
       if (rotaryId === rot.id) {
         return { ...rot, stickerColor: this.state.rotaries[index].stickerColor, textColor: this.state.rotaries[index].textColor }
@@ -407,7 +262,6 @@ class GSIButtonConfig extends Component {
           <$ConfigLeft>
             <label>GSI Presets:</label>
             <select onChange={e => {
-              console.log(e.target.value, presets);
               if (e.target.value !== 'none') {
                 this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
               }
@@ -422,6 +276,19 @@ class GSIButtonConfig extends Component {
 
           <$ButtonsContainer id="gsiConfig">
             <img src={'./images/fpe-trans-buttons-base.png'} alt='button base' />
+            <svg height="0" xmlns="http://www.w3.org/2000/svg">
+              <filter id="drop-shadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+                <feOffset dx="12" dy="12" result="offsetblur" />
+                <feFlood flood-color="rgba(0,0,0,0.5)" />
+                <feComposite in2="offsetblur" operator="in" />
+                <feMerge>
+                  <feMergeNode />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </svg>
+
             {this.state.buttons.map((btn, idx) =>
               <GSIButton
                 key={`btn-${idx}-${btn.row}-${btn.side}`}

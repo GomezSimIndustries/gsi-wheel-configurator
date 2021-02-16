@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ColorSelect from '../color-select';
 import TextSelect from '../text-select';
@@ -36,7 +36,7 @@ const $EditorContainer = styled.div`
         right: auto;
         left: 60px;
     `}
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
     box-shadow: 5px 5px 15px 5px #000000;
 `;
 
@@ -112,8 +112,88 @@ export const $RowContainer = styled.div`
   flex-direction: row;
 `;
 
+export const $ColorSwatchButton = styled.div`
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: ${p => p.color};
+    border-radius: 3px;
+    border: 1px solid grey;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+
+    &:hover {
+        border: 2px solid white;
+    }
+`;
+
+export const $HexValue = styled.div`
+    margin-left: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`;
+
+export const $ColorPickerContainer = styled.div`
+    display: ${p => p.open ? 'block' : 'none'};
+    position: absolute;
+    left: 55px;
+    z-index: 2;
+    box-shadow: 5px 5px 15px 5px #000000;
+`;
+
+export const $CloseButton = styled.div`
+    box-sizing: border-box;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    border: 1px solid white;
+    position: absolute;
+    top: 0;
+    right: -20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    line-height: 8px;
+    cursor: pointer;
+    ${p => p.dark && css`
+        color: black;
+        border: 1px solid black;
+        background-color: white;
+    `}
+    box-shadow: 5px 5px 15px 5px #000000;
+    &:hover {
+        border-width: 3px;
+    }
+`;
 
 class ButtonEditor extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            pickerOpen: false,
+        };
+        this.togglePicker = this.togglePicker.bind(this);
+    }
+
+    togglePicker(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        this.setState({
+            pickerOpen: !this.state.pickerOpen
+        });
+    }
+
+    componentDidUpdate(oldProps, oldState) {
+        if (oldProps.active && !this.props.active) {
+            if (this.state.pickerOpen)
+                this.setState({ pickerOpen: false });
+        }
+    }
 
     render() {
         const {
@@ -128,7 +208,8 @@ class ButtonEditor extends Component {
             side,
             copyButtonAll,
             copyButtonRow,
-            row
+            row,
+            setActive
         } = this.props;
         return (
             <$EditorContainer
@@ -136,6 +217,7 @@ class ButtonEditor extends Component {
                 side={side}
                 onClick={(e) => e.stopPropagation()}
                 row={row}>
+                <$CloseButton onClick={e => setActive(-1)}>x</$CloseButton>
                 <$GroupContainer>
                     <span>Colors</span>
                     <$RowContainer>
@@ -161,27 +243,32 @@ class ButtonEditor extends Component {
                     </$RowContainer>
                     <$ElementContainer>
                         <span>Sticker</span>
-                        <SketchPicker
-                            color={stickerColor}
-                            disableAlpha={true}
-                            presetColors={stickerColors}
-                            onChange={color => {
-                                setColor('stickerColor', index, color.hex);
-                            }} />
+                        <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
+                        <$HexValue>Value: {stickerColor}</$HexValue>
+                        <$ColorPickerContainer
+                            open={this.state.pickerOpen}
+                            id="sketchPicker">
+                            <SketchPicker
+                                color={stickerColor}
+                                disableAlpha={true}
+                                presetColors={stickerColors}
+                                onClick={e => { e.stopPropagation(); }}
+                                onChange={color => {
+                                    setColor('stickerColor', index, color.hex);
+                                }}
+                                style={{ padding: "15px" }} />
+                            <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
+                        </$ColorPickerContainer>
                     </$ElementContainer>
                     <$GroupContainer>
                         <span>Apply Colors To</span>
                         <$RowContainer>
-                            <$ElementContainer>
-                                <button onClick={e => {
-                                    copyButtonAll(index);
-                                }}>ALL BUTTONS</button>
-                            </$ElementContainer>
-                            <$ElementContainer>
-                                <button onClick={e => {
-                                    copyButtonRow(index);
-                                }}>ROW</button>
-                            </$ElementContainer>
+                            <button onClick={e => {
+                                copyButtonAll(index);
+                            }}>ALL BUTTONS</button>
+                            <button onClick={e => {
+                                copyButtonRow(index);
+                            }}>ROW</button>
                         </$RowContainer>
                     </$GroupContainer>
                 </$GroupContainer>

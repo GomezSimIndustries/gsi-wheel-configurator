@@ -51,6 +51,14 @@ const $ButtonContainer = styled.div`
             stroke-linejoin: round;
         }
     }
+
+    ${p => p.active && css`
+        ${$StickerContainer} > svg {
+            stroke: white !important;
+            stroke-width: 3px;
+            stroke-linejoin: round;
+        }
+    `}
 `;
 
 const $IconContainer = styled.div`
@@ -154,6 +162,7 @@ class GSIButton extends Component {
                 x={buttonX}
                 y={buttonY}
                 side={side}
+                active={active}
                 onClick={(e) => {
                     !active ? setActive(id) : setActive(-1);
                     e.stopPropagation();
@@ -231,6 +240,7 @@ class GSIButton extends Component {
                     copyButtonAll={copyButtonAll}
                     copyButtonRow={copyButtonRow}
                     row={row}
+                    setActive={setActive}
                 />
             </$ButtonContainer >
         );

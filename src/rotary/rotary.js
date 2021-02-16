@@ -95,8 +95,6 @@ class GSIRotary extends Component {
         if (index === 0 || index === 1 || index === 2 || index === 4) {
             side = 'left';
         }
-        console.log(rotaryTexts);
-        console.log(text);
         return (
             <$RotaryContainer
                 x={x}
@@ -117,12 +115,12 @@ class GSIRotary extends Component {
                         height={rotaryConfig[index].sticker.height}
                     />
                 </$StickerContainer>
-                <img src={image} alt='rotary dial' style={{ height: direction.toLowerCase() === 'funky' ? "42px" : "73px", width: direction.toLowerCase() === 'funky' ? "42px" : "73px" }}/>
+                <img src={image} alt='rotary dial' style={{ height: direction.toLowerCase() === 'funky' ? "42px" : "73px", width: direction.toLowerCase() === 'funky' ? "42px" : "73px" }} />
                 {index !== 2 && (
                     <$TextContainer
-                    x={rotaryConfig[index].text.x}
-                    y={rotaryConfig[index].text.y}
-                    color={textColor}>
+                        x={rotaryConfig[index].text.x}
+                        y={rotaryConfig[index].text.y}
+                        color={textColor}>
                         {rotaryTexts[text].text}
                     </$TextContainer>
                 )}
@@ -137,7 +135,8 @@ class GSIRotary extends Component {
                     setText={setText}
                     index={index}
                     side={side}
-                    copyRotaryAll={copyRotaryAll} />
+                    copyRotaryAll={copyRotaryAll}
+                    setActive={setActive} />
             </$RotaryContainer>
         );
     }
