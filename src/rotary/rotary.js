@@ -38,6 +38,14 @@ const $RotaryContainer = styled.div`
             stroke-linejoin: round;
         }
     }
+    
+    ${p => p.active && css`
+        ${$StickerContainer} > svg {
+            stroke: white !important;
+            stroke-width: 3px;
+            stroke-linejoin: round;
+        }
+    `}
 `;
 
 const $IconContainer = styled.div`
@@ -101,6 +109,7 @@ class GSIRotary extends Component {
                 y={y}
                 index={index}
                 color={textColor}
+                active={active}
                 onClick={(e) => {
                     !active ? setActive(id) : setActive(-1);
                     e.stopPropagation();

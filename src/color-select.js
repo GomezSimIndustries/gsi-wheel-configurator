@@ -1,5 +1,9 @@
 import React from 'react';
 
+import {
+    $ColorSwatchButton,
+} from './button/button-editor'
+
 const ColorSelect = ({ setColor, index, color, colors, type }) => {
 
     return (

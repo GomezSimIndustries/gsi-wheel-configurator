@@ -134,7 +134,7 @@ export const $HexValue = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 `;
 
 export const $ColorPickerContainer = styled.div`
@@ -244,7 +244,12 @@ class ButtonEditor extends Component {
                     <$ElementContainer>
                         <span>Sticker</span>
                         <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
-                        <$HexValue>Value: {stickerColor}</$HexValue>
+                        <$HexValue>Value:
+                        <input type="text"
+                                value={stickerColor}
+                                style={{ width: '65px', marginLeft: '10px' }}
+                                onChange={e => setColor('stickerColor', index, e.target.value)}/>
+                        </$HexValue>
                         <$ColorPickerContainer
                             open={this.state.pickerOpen}
                             id="sketchPicker">
