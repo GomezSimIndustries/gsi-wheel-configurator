@@ -21,11 +21,10 @@ const $EditorContainer = styled.div`
     position: absolute;
     cursor: initial;
     display: ${props => props.active ? 'block' : 'none'};
-    background-color: black;
-    border: 2px solid #00ffff;
-    border-radius: 6px;
+    background-color: #050505;
+    /* border: 1px solid white;
+    border-radius: 6px; */
     padding: 10px;
-    padding-bottom: 3px;
     z-index: 10;
     min-width: 100px;
     font-size: 14px;
@@ -36,43 +35,17 @@ const $EditorContainer = styled.div`
         right: auto;
         left: 60px;
     `}
-    -webkit-box-shadow: 5px 5px 15px 5px #000000;
-    box-shadow: 5px 5px 15px 5px #000000;
-`;
+    -webkit-box-shadow: 2px 2px 5px 2px #000000;
+    box-shadow: 2px 2px 5px 2px #000000;
 
-export const $ElementContainer = styled.div`
-    padding: 10px;
-    border: 2px solid #00ffff;
-    border-radius: 6px;
-    margin: 8px 0;
-    display: flex;
-    position: relative;
-
-    &:first-child {
-        border: 2px solid white;
+    button {
+        font-size: 13px;
     }
-    &:last-child {
-        border: 2px solid #c20358;
-    }
-    &:nth-child(2) {
-        border: 2px solid #480048;
-    }
-    &:nth-child(3) {
-        border: 2px solid #f29900;
-    }
-
-    span {
-        position: absolute;
-        background-color: black;
-        top: -10px;
-    }
-
 `;
 
 export const $GroupContainer = styled.div`
     padding: 10px;
-    padding-bottom: 3px;
-    border: 2px solid #00ffff;
+    border: 1px solid white;
     border-radius: 6px;
     margin: 5px 0;
     display: flex;
@@ -81,28 +54,13 @@ export const $GroupContainer = styled.div`
     &:firstChild {
         margin-bottom: 5px;
     }
-    &:first-child {
-        border: 2px solid white;
-    }
-    &:last-child {
-        border: 2px solid #c20358;
-    }
-    &:nth-child(2) {
-        border: 2px solid #480048;
-    }
-    &:nth-child(3) {
-        border: 2px solid #f29900;
-    }
     & > span {
         position: absolute;
         background-color: black;
         top: -10px;
     }
-
-    ${$ElementContainer} {
-        &:first-of-type {
-            margin-right: 10px;
-        }
+    &:nth-of-type(2) {
+        margin-bottom: 10px;
     }
 `;
 
@@ -110,6 +68,7 @@ export const $RowContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
+  margin-bottom: 10px;
 `;
 
 export const $ColorSwatchButton = styled.div`
@@ -125,7 +84,7 @@ export const $ColorSwatchButton = styled.div`
     cursor: pointer;
 
     &:hover {
-        border: 2px solid white;
+        border: 1px solid white;
     }
 `;
 
@@ -142,7 +101,7 @@ export const $ColorPickerContainer = styled.div`
     position: absolute;
     left: 55px;
     z-index: 2;
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 2px 2px 5px 2px #000000;
 `;
 
 export const $CloseButton = styled.div`
@@ -164,7 +123,7 @@ export const $CloseButton = styled.div`
         border: 1px solid black;
         background-color: white;
     `}
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 2px 2px 2px 2px #000000;
     &:hover {
         border-width: 3px;
     }
@@ -221,7 +180,7 @@ class ButtonEditor extends Component {
                 <$GroupContainer>
                     <span>Colors</span>
                     <$RowContainer>
-                        <$ElementContainer>
+                        <div>
                             <span>Button</span>
                             <ColorSelect
                                 setColor={setColor}
@@ -229,8 +188,8 @@ class ButtonEditor extends Component {
                                 color={buttonColor}
                                 colors={buttonColors}
                                 type={'buttonColor'} />
-                        </$ElementContainer>
-                        <$ElementContainer>
+                        </div>
+                        <div>
                             <span>Text</span>
                             <ColorSelect
                                 setColor={setColor}
@@ -239,33 +198,37 @@ class ButtonEditor extends Component {
                                 color={textColor}
                                 colors={textColors}
                                 type={'textColor'} />
-                        </$ElementContainer>
+                        </div>
                     </$RowContainer>
-                    <$ElementContainer>
-                        <span>Sticker</span>
-                        <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
-                        <$HexValue>Value:
+                    <div>
+                        <div>
+                            <span>Sticker</span>
+                        </div>
+                        <$RowContainer>
+                            <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
+                            <$HexValue>Value:
                         <input type="text"
-                                value={stickerColor}
-                                style={{ width: '65px', marginLeft: '10px' }}
-                                onChange={e => setColor('stickerColor', index, e.target.value)}/>
-                        </$HexValue>
-                        <$ColorPickerContainer
-                            open={this.state.pickerOpen}
-                            id="sketchPicker">
-                            <SketchPicker
-                                color={stickerColor}
-                                disableAlpha={true}
-                                presetColors={stickerColors}
-                                onClick={e => { e.stopPropagation(); }}
-                                onChange={color => {
-                                    setColor('stickerColor', index, color.hex);
-                                }}
-                                style={{ padding: "15px" }} />
-                            <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
-                        </$ColorPickerContainer>
-                    </$ElementContainer>
-                    <$GroupContainer>
+                                    value={stickerColor}
+                                    style={{ width: '65px', marginLeft: '10px' }}
+                                    onChange={e => setColor('stickerColor', index, e.target.value)} />
+                            </$HexValue>
+                            <$ColorPickerContainer
+                                open={this.state.pickerOpen}
+                                id="sketchPicker">
+                                <SketchPicker
+                                    color={stickerColor}
+                                    disableAlpha={true}
+                                    presetColors={stickerColors}
+                                    onClick={e => { e.stopPropagation(); }}
+                                    onChange={color => {
+                                        setColor('stickerColor', index, color.hex);
+                                    }}
+                                    style={{ padding: "15px" }} />
+                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
+                            </$ColorPickerContainer>
+                        </$RowContainer>
+                    </div>
+                    <div>
                         <span>Apply Colors To</span>
                         <$RowContainer>
                             <button onClick={e => {
@@ -275,16 +238,16 @@ class ButtonEditor extends Component {
                                 copyButtonRow(index);
                             }}>ROW</button>
                         </$RowContainer>
-                    </$GroupContainer>
+                    </div>
                 </$GroupContainer>
-                <$ElementContainer>
+                <$GroupContainer>
                     <span>Function</span>
                     <TextSelect setText={setText}
                         value={text}
                         index={index}
                         text={text}
                         texts={stickerTexts} />
-                </$ElementContainer>
+                </$GroupContainer>
             </$EditorContainer>
         );
     }

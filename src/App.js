@@ -276,18 +276,6 @@ class GSIButtonConfig extends Component {
 
           <$ButtonsContainer id="gsiConfig">
             <img src={'./images/fpe-trans-buttons-base.png'} alt='button base' />
-            <svg height="0" xmlns="http://www.w3.org/2000/svg">
-              <filter id="drop-shadow">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
-                <feOffset dx="12" dy="12" result="offsetblur" />
-                <feFlood flood-color="rgba(0,0,0,0.5)" />
-                <feComposite in2="offsetblur" operator="in" />
-                <feMerge>
-                  <feMergeNode />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </svg>
 
             {this.state.buttons.map((btn, idx) =>
               <GSIButton
