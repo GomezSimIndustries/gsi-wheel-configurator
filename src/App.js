@@ -333,7 +333,9 @@ class GSIButtonConfig extends Component {
                 )}
                 <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
                   <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
-                  <RotaryDir width="114px" height="69px" style={{ left: "95px", top: "21px", color: "white" }} />
+                  <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
+                    <RotaryDir width="115px" height="85px" style={{ color: "white", fill: 'white !important' }} />
+                  </div>
                   {this.state.rotaries.map((rot, idx) =>
                     <GSIRotary
                       key={`rotary-${idx}`}
