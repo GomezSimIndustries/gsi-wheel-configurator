@@ -105,7 +105,7 @@ const $RotaryContainer = styled.div`
   svg {
     position: absolute;
     fill: currentColor;
-  }
+  }  
 `;
 
 class GSIButtonConfig extends Component {
@@ -116,8 +116,8 @@ class GSIButtonConfig extends Component {
       lastWheel: 'fpe',
       activeButtonId: -1,
       activePreset: 'default',
-      imageSaveName: 'my-gsi-image',
-      configSaveName: 'my-gsi-config',
+      imageSaveName: 'my-gsi-fpe-wheel-image',
+      configSaveName: 'my-gsi-fpe-wheel-config',
       dashVersion: "default",
       saveIsOpen: false,
       buttons: presets.default.buttons,
@@ -138,6 +138,7 @@ class GSIButtonConfig extends Component {
     this.copyButtonRow = this.copyButtonRow.bind(this);
     this.copyRotaryAll = this.copyRotaryAll.bind(this);
     this.loadPreset = this.loadPreset.bind(this);
+    this.setSaveClosed = this.setSaveClosed.bind(this);
 
     this.loadPreset('default');
   }
@@ -276,6 +277,10 @@ class GSIButtonConfig extends Component {
     this.setState({ buttons: presets[preset].buttons, rotaries: presets[preset].rotaries });
   }
 
+  setSaveClosed() {
+    this.setState({ saveIsOpen: false });
+  }
+
   render() {
     const presetKeys = Object.entries(presets);
     return (
@@ -290,6 +295,8 @@ class GSIButtonConfig extends Component {
           uploadConfig={this.uploadConfig}
           active={this.state.saveIsOpen}
           saveConfig={this.saveConfig}
+          wheel={this.state.wheel}
+          setSaveClosed={this.setSaveClosed}
         />
         <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
           <$ConfigLeft>
@@ -354,6 +361,20 @@ class GSIButtonConfig extends Component {
         <$BottomControls>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ margin: '10px' }}>
+              <label>Wheel:</label>
+              <select style={{ marginLeft: '5px' }} onChange={e => {
+                this.setState({
+                  lastWheel: this.state.wheel,
+                  wheel: e.target.value,
+                  imageSaveName: 'my-gsi-' + e.target.value + '-wheel-image',
+                  configSaveName: 'my-gsi-' + e.target.value + '-wheel-config',
+                });
+              }}>
+                <option value={'fpe'}>{'GSI FPE'}</option>
+                <option value={'gxl'}>{'GSI GXL'}</option>
+              </select>
+            </div>
+            <div style={{ margin: '10px' }}>
               <label>Presets:</label>
               <select style={{ marginLeft: '5px' }} onChange={e => {
                 if (e.target.value !== 'none') {
@@ -365,18 +386,6 @@ class GSIButtonConfig extends Component {
                     {presets[key].name}
                   </option>
                 )}
-              </select>
-            </div>
-            <div style={{ margin: '10px' }}>
-              <label>Wheel:</label>
-              <select style={{ marginLeft: '5px' }} onChange={e => {
-                this.setState({
-                  lastWheel: this.state.wheel,
-                  wheel: e.target.value
-                });
-              }}>
-                <option value={'fpe'}>{'GSI FPE'}</option>
-                <option value={'gxl'}>{'GSI GXL'}</option>
               </select>
             </div>
             <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>

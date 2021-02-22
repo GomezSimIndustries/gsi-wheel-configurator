@@ -55,7 +55,7 @@ const $TextContainer = styled.div`
     color: ${p => p.color};
     font-weight: 500;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
     overflow: hidden;
     line-height: 11px;
@@ -63,10 +63,21 @@ const $TextContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
+    width: ${p => p.funky ? '40px' : '48px'};
     height: 15px;
     left: ${p => p.x}px;
-    top: ${p => p.y}px;
+    top: ${p => p.y}px;    
+    @font-face {
+        font-family: 'Adrianna';
+        src: local('Adrianna Extra bold'), local('Adrianna-Extra-bold'),
+            url('../Adrianna-Extrabold.woff2') format('woff2'),
+            url('../Adrianna-Extrabold.woff') format('woff'),
+            url('../Adrianna-Extrabold.ttf') format('truetype');
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    font-family: 'Adrianna', Arial, serif;
 `;
 
 class GSIRotary extends Component {
@@ -129,7 +140,8 @@ class GSIRotary extends Component {
                     <$TextContainer
                         x={rotaryConfig[index].text.x}
                         y={rotaryConfig[index].text.y}
-                        color={textColor}>
+                        color={textColor}
+                        funky={index === 0}>
                         {rotaryTexts[text].text}
                     </$TextContainer>
                 )}

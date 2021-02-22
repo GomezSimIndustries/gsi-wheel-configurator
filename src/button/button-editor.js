@@ -54,7 +54,7 @@ export const $GroupContainer = styled.div`
     }
     & > span {
         position: absolute;
-        background-color: black;
+        background-color: #050505;
         top: -10px;
     }
     &:nth-of-type(2) {
@@ -96,14 +96,15 @@ export const $HexValue = styled.div`
 
 export const $ColorPickerContainer = styled.div`
     display: ${p => p.open ? 'block' : 'none'};
-    background-color: black;
+    background-color: #050505;
     padding: 5px;
     position: absolute;
     left: 55px;
     z-index: 2;
     box-shadow: 2px 2px 5px 2px #000000;
     & > div:first-of-type {
-        background-color: black !important;
+        background-color: #050505 !important;
+        color: white !important;
     }
 `;
 

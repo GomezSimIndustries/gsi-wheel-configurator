@@ -88,7 +88,7 @@ const $TextContainer = styled.div`
     text-transform: uppercase;
     left: ${p => p.offsetX};
     top: ${p => p.offsetY};
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
     overflow: hidden;
     color: ${p => p.color};
@@ -114,6 +114,18 @@ const $TextContainer = styled.div`
             `
             }
             `}
+    
+    @font-face {
+        font-family: 'Adrianna';
+        src: local('Adrianna Extra bold'), local('Adrianna-Extra-bold'),
+            url('../Adrianna-Extrabold.woff2') format('woff2'),
+            url('../Adrianna-Extrabold.woff') format('woff'),
+            url('../Adrianna-Extrabold.ttf') format('truetype');
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    font-family: 'Adrianna', Arial, serif;
 `;
 
 class GSIButton extends Component {

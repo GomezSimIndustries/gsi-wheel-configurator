@@ -11,7 +11,7 @@ import {
     $ColorSwatchButton,
     $HexValue,
     $ColorPickerContainer
-} from '../button/button-editor'
+} from '../button/button-editor';
 
 const $EditorContainer = styled.div`
     transform: translateY(-50%);

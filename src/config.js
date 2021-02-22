@@ -109,7 +109,7 @@ export const rotaryConfig = [
         x: "130",
         y: "144",
         text: {
-            x: -2,
+            x: 1,
             y: -21
         },
         sticker: {
