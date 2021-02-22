@@ -22,9 +22,7 @@ const $EditorContainer = styled.div`
     cursor: initial;
     display: ${props => props.active ? 'block' : 'none'};
     background-color: #050505;
-    /* border: 1px solid white;
-    border-radius: 6px; */
-    padding: 10px;
+    padding: 15px;
     z-index: 10;
     min-width: 100px;
     font-size: 14px;
@@ -106,13 +104,11 @@ export const $ColorPickerContainer = styled.div`
 
 export const $CloseButton = styled.div`
     box-sizing: border-box;
-    width: 15px;
-    height: 15px;
-    border-radius: 3px;
-    border: 1px solid white;
+    width: 10px;
+    height: 10px;
     position: absolute;
-    top: 0;
-    right: -20px;
+    top: 2px;
+    right: 2px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -120,12 +116,10 @@ export const $CloseButton = styled.div`
     cursor: pointer;
     ${p => p.dark && css`
         color: black;
-        border: 1px solid black;
         background-color: white;
     `}
-    box-shadow: 2px 2px 2px 2px #000000;
     &:hover {
-        border-width: 3px;
+        font-weight: 700;
     }
 `;
 
@@ -224,7 +218,7 @@ class ButtonEditor extends Component {
                                         setColor('stickerColor', index, color.hex);
                                     }}
                                     style={{ padding: "15px" }} />
-                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
+                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true} style={{ fontSize: "10px" }}>x</$CloseButton>
                             </$ColorPickerContainer>
                         </$RowContainer>
                     </div>

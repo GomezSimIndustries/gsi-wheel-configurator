@@ -13,6 +13,7 @@ const $Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  padding: 10px;
 `;
 
 const $BottomControls = styled.div`
@@ -24,17 +25,17 @@ const $BottomControls = styled.div`
 `;
 
 const $SaveButton = styled.button`
-  padding: 16px;
+  padding: 10px;
   background-color: #e61754;
-  border-radius: 6px;
+  border-radius: 15px;
   border: none;
   cursor: pointer;
-  font-weight: strong;
-  font-size: 32px;
+  font-size: 16px;
   color: white;
+  flex-grow: 0;
+  align-self: center;
 `;
 
-const assetPath = process.env.PUBLIC_URL + '/assets/';
 const $ButtonsContainer = styled.div`
   position: relative;
   & > img {
@@ -47,21 +48,12 @@ const $ButtonsContainer = styled.div`
 const $ConfigContainer = styled.div`
   position: relative;
   display: flex;
+  justify-content: center;
 `;
 
-const $ButtonRow = styled.div`
-  height: auto;
-  width: 200px;
-  border-bottom: 2px solid pink;
-
-  &:last-child {
-    border-bottom: none;
-  }
-`;
 const $ConfigLeft = styled.div`
   width: 200px;
 `;
-
 
 const $ConfigRight = styled.div`
   width: 200px;
@@ -74,6 +66,16 @@ const $RotaryContainer = styled.div`
   svg {
     position: absolute;
     fill: currentColor;
+  }
+`;
+
+const $GSILogo = styled.div`
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  img {
+    width: 150px;
   }
 `;
 
@@ -260,18 +262,6 @@ class GSIButtonConfig extends Component {
         />
         <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
           <$ConfigLeft>
-            <label>GSI Presets:</label>
-            <select onChange={e => {
-              if (e.target.value !== 'none') {
-                this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
-              }
-            }}>
-              {Object.keys(presets).map(key =>
-                <option key={key} value={key}>
-                  {presets[key].name}
-                </option>
-              )}
-            </select>
           </$ConfigLeft>
 
           <$ButtonsContainer id="gsiConfig">
@@ -316,13 +306,32 @@ class GSIButtonConfig extends Component {
                 />
               )}
             </$RotaryContainer>
+            <$GSILogo>
+              <img src={'./images/gsi-word-logo-white.png'} alt='button base' />
+            </$GSILogo>
           </$ButtonsContainer>
           <$ConfigRight>
           </$ConfigRight>
         </$ConfigContainer >
 
         <$BottomControls>
-          <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ margin: '10px' }}>
+              <label>Presets:</label>
+              <select style={{ marginLeft: '5px' }} onChange={e => {
+                if (e.target.value !== 'none') {
+                  this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
+                }
+              }}>
+                {Object.keys(presets).map(key =>
+                  <option key={key} value={key}>
+                    {presets[key].name}
+                  </option>
+                )}
+              </select>
+            </div>
+            <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>
+          </div>
         </$BottomControls>
       </$Container>
     );

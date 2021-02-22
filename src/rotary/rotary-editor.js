@@ -19,9 +19,7 @@ const $EditorContainer = styled.div`
     cursor: initial;
     display: ${props => props.active ? 'block' : 'none'};
     background-color: #050505;
-    border: 2px solid white;
-    border-radius: 6px;
-    padding: 10px;
+    padding: 15px;
     padding-bottom: 3px;
     z-index: 10;
     min-width: 100px;
