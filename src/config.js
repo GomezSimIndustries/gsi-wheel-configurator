@@ -242,12 +242,12 @@ export const config = {
         stickerHeight: "94px",
         stickerWidth: "80px",
         buttonLeft: {
-            x: "234px",
-            y: "121px",
+            x: "222px",
+            y: "123px",
         },
         buttonRight: {
-            x: "663px",
-            y: "121px",
+            x: "672px",
+            y: "123px",
         },
         stickerLeft: {
             x: "-19",
@@ -283,11 +283,11 @@ export const config = {
         stickerWidth: "102px",
         buttonLeft: {
             x: "205px",
-            y: "203px",
+            y: "205px",
         },
         buttonRight: {
             x: "691px",
-            y: "203px",
+            y: "205px",
         },
         stickerLeft: {
             x: "-17",

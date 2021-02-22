@@ -96,10 +96,15 @@ export const $HexValue = styled.div`
 
 export const $ColorPickerContainer = styled.div`
     display: ${p => p.open ? 'block' : 'none'};
+    background-color: black;
+    padding: 5px;
     position: absolute;
     left: 55px;
     z-index: 2;
     box-shadow: 2px 2px 5px 2px #000000;
+    & > div:first-of-type {
+        background-color: black !important;
+    }
 `;
 
 export const $CloseButton = styled.div`
@@ -114,10 +119,6 @@ export const $CloseButton = styled.div`
     align-content: center;
     line-height: 8px;
     cursor: pointer;
-    ${p => p.dark && css`
-        color: black;
-        background-color: white;
-    `}
     &:hover {
         font-weight: 700;
     }
@@ -218,7 +219,7 @@ class ButtonEditor extends Component {
                                         setColor('stickerColor', index, color.hex);
                                     }}
                                     style={{ padding: "15px" }} />
-                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true} style={{ fontSize: "10px" }}>x</$CloseButton>
+                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
                             </$ColorPickerContainer>
                         </$RowContainer>
                     </div>

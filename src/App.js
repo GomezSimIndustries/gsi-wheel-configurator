@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import GSIButton from './button/button';
 import GSIRotary from './rotary/rotary';
 import * as html2canvas from 'html2canvas';
@@ -44,6 +45,41 @@ const $ButtonsContainer = styled.div`
     -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
     filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
   }
+  
+  /* appear - on page load */
+  &.wheel-appear {
+      opacity: 0;
+      transform: scale(0.01);
+  }
+  &.wheel-appear.wheel-appear-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 2000ms ease;
+  }
+
+  &.wheel-enter {
+    opacity: 0;
+    position: absolute;
+    transform: scale(0.01);
+  }
+  &.wheel-enter.wheel-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 1000ms ease 1000ms;
+  }
+  &.wheel-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  &.wheel-exit.wheel-exit-active {
+    opacity: 0;
+    transform: scale(0.01);
+    transition: all 1000ms ease;
+  }
+  &.wheel-exit-done {
+    opacity: 0;
+    display: none;
+  }
 `;
 const $ConfigContainer = styled.div`
   position: relative;
@@ -63,19 +99,12 @@ const $RotaryContainer = styled.div`
   position: absolute;
   left: 315px;
   top: 251px;
+  ${p => p.isGXL && css`
+    top: 191px;
+  `}
   svg {
     position: absolute;
     fill: currentColor;
-  }
-`;
-
-const $GSILogo = styled.div`
-  position: absolute;
-  bottom: -35px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  img {
-    width: 150px;
   }
 `;
 
@@ -83,6 +112,8 @@ class GSIButtonConfig extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      wheel: 'fpe',
+      lastWheel: 'fpe',
       activeButtonId: -1,
       activePreset: 'default',
       imageSaveName: 'my-gsi-image',
@@ -263,53 +294,59 @@ class GSIButtonConfig extends Component {
         <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
           <$ConfigLeft>
           </$ConfigLeft>
+          <TransitionGroup>
+            <CSSTransition
+              // in={this.state.wheel !== this.state.lastWheel}
+              key={this.state.wheel}
+              appear={true}
+              timeout={2000}
+              classNames="wheel"
+            >
+              <$ButtonsContainer id="gsiConfig">
+                <img src={`./images/${this.state.wheel}-trans-buttons-base.png`} alt='button base' />
 
-          <$ButtonsContainer id="gsiConfig">
-            <img src={'./images/fpe-trans-buttons-base.png'} alt='button base' />
-
-            {this.state.buttons.map((btn, idx) =>
-              <GSIButton
-                key={`btn-${idx}-${btn.row}-${btn.side}`}
-                index={idx}
-                id={btn.id}
-                stickerColor={btn.stickerColor}
-                buttonColor={btn.buttonColor}
-                textColor={btn.textColor}
-                text={btn.text}
-                row={btn.row}
-                side={btn.side}
-                setColor={this.setColor}
-                setText={this.setText}
-                active={this.state.activeButtonId === btn.id}
-                setActive={this.setActive}
-                copyButtonAll={this.copyButtonAll}
-                copyButtonRow={this.copyButtonRow}
-              />
-            )}
-            <$RotaryContainer>
-              <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
-              <RotaryDir width="114px" height="69px" style={{ left: "95px", top: "21px", color: "white" }} />
-              {this.state.rotaries.map((rot, idx) =>
-                <GSIRotary
-                  key={`rotary-${idx}`}
-                  index={idx}
-                  id={rot.id}
-                  stickerColor={rot.stickerColor}
-                  text={rot.text}
-                  textColor={rot.textColor}
-                  rotaryColor={rot.rotaryColor}
-                  active={this.state.activeButtonId === rot.id}
-                  setColor={this.setRotaryColor}
-                  setText={this.setRotaryText}
-                  setActive={this.setActive}
-                  copyRotaryAll={this.copyRotaryAll}
-                />
-              )}
-            </$RotaryContainer>
-            <$GSILogo>
-              <img src={'./images/gsi-word-logo-white.png'} alt='button base' />
-            </$GSILogo>
-          </$ButtonsContainer>
+                {this.state.buttons.map((btn, idx) =>
+                  <GSIButton
+                    key={`btn-${idx}-${btn.row}-${btn.side}`}
+                    index={idx}
+                    id={btn.id}
+                    stickerColor={btn.stickerColor}
+                    buttonColor={btn.buttonColor}
+                    textColor={btn.textColor}
+                    text={btn.text}
+                    row={btn.row}
+                    side={btn.side}
+                    setColor={this.setColor}
+                    setText={this.setText}
+                    active={this.state.activeButtonId === btn.id}
+                    setActive={this.setActive}
+                    copyButtonAll={this.copyButtonAll}
+                    copyButtonRow={this.copyButtonRow}
+                  />
+                )}
+                <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
+                  <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
+                  <RotaryDir width="114px" height="69px" style={{ left: "95px", top: "21px", color: "white" }} />
+                  {this.state.rotaries.map((rot, idx) =>
+                    <GSIRotary
+                      key={`rotary-${idx}`}
+                      index={idx}
+                      id={rot.id}
+                      stickerColor={rot.stickerColor}
+                      text={rot.text}
+                      textColor={rot.textColor}
+                      rotaryColor={rot.rotaryColor}
+                      active={this.state.activeButtonId === rot.id}
+                      setColor={this.setRotaryColor}
+                      setText={this.setRotaryText}
+                      setActive={this.setActive}
+                      copyRotaryAll={this.copyRotaryAll}
+                    />
+                  )}
+                </$RotaryContainer>
+              </$ButtonsContainer>
+            </CSSTransition>
+          </TransitionGroup>
           <$ConfigRight>
           </$ConfigRight>
         </$ConfigContainer >
@@ -328,6 +365,18 @@ class GSIButtonConfig extends Component {
                     {presets[key].name}
                   </option>
                 )}
+              </select>
+            </div>
+            <div style={{ margin: '10px' }}>
+              <label>Wheel:</label>
+              <select style={{ marginLeft: '5px' }} onChange={e => {
+                this.setState({
+                  lastWheel: this.state.wheel,
+                  wheel: e.target.value
+                });
+              }}>
+                <option value={'fpe'}>{'GSI FPE'}</option>
+                <option value={'gxl'}>{'GSI GXL'}</option>
               </select>
             </div>
             <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>
