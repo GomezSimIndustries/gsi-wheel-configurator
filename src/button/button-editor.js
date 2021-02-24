@@ -225,7 +225,7 @@ class ButtonEditor extends Component {
                                 value={stickerColor}
                                 style={{ width: '65px', marginLeft: '10px' }}
                                 onChange={e => setColor('stickerColor', index, e.target.value)}
-                                title="Enter Color Hex Value or HTML Color Name"/>
+                                title="Enter Color Hex Value or HTML Color Name" />
                             <$ColorPickerContainer
                                 open={this.state.pickerOpen && this.state.pickerElement === 'sticker'}
                                 id="sketchPicker">

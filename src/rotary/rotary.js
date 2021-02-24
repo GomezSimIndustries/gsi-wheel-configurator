@@ -127,7 +127,9 @@ class GSIRotary extends Component {
                 onClick={(e) => {
                     !active ? setActive(id) : setActive(-1);
                     e.stopPropagation();
-                }}>
+                }}
+                
+                title="Click to customize rotary">
                 <$StickerContainer
                     x={rotaryConfig[index].sticker.x}
                     y={rotaryConfig[index].sticker.y}

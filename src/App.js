@@ -5,6 +5,12 @@ import GSIButton from './button/button';
 import GSIRotary from './rotary/rotary';
 import * as html2canvas from 'html2canvas';
 import { presets } from './config';
+import Switch from '@material-ui/core/Switch';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import { RotaryBase, RotaryDir } from './stickers';
 import SaveControls from './save';
@@ -15,6 +21,21 @@ const $Container = styled.div`
   justify-content: center;
   align-content: center;
   padding: 10px;
+  input[type=text], select {
+    background-color: #181818;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+  }
+
+  select {
+    appearance: none;
+    border: none;
+    background: #181818 url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='white'/></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+    background-size: 15px 10px;
+    padding-right: 30px;
+  }
 `;
 
 const $BottomControls = styled.div`
@@ -35,6 +56,7 @@ const $SaveButton = styled.button`
   color: white;
   flex-grow: 0;
   align-self: center;
+  margin: 10px;
 `;
 
 const $ButtonsContainer = styled.div`
@@ -101,6 +123,30 @@ const $RotaryContainer = styled.div`
     fill: currentColor;
   }  
 `;
+
+const $GSISwitch = styled(Switch)`
+  .MuiSwitch-track {
+    background-color: red;
+  }
+`;
+
+const $GSISelectLabel = styled(InputLabel)`
+  &.MuiFormLabel-root, &.Mui-focused {
+    background-color: #181818;
+    color: white;
+  }
+`
+
+const $GSISelect = styled(Select)`
+  color: white !important;
+  background-color: #181818;
+  .MuiSvgIcon-root {
+    color: white;
+  }
+  label {
+    color: white;
+  }
+`
 
 class GSIButtonConfig extends Component {
   constructor(props) {
@@ -355,28 +401,60 @@ class GSIButtonConfig extends Component {
         </$ConfigContainer >
 
         <$BottomControls>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <div style={{ margin: '10px' }}>
-              <label>Wheel:</label>
-              <select style={{ marginLeft: '5px' }} onChange={e => {
-                this.setState({
-                  lastWheel: this.state.wheel,
-                  wheel: e.target.value,
-                  imageSaveName: 'my-gsi-' + e.target.value + '-wheel-image',
-                  configSaveName: 'my-gsi-' + e.target.value + '-wheel-config',
-                });
-              }}>
-                <option value={'fpe'}>{'GSI FPE'}</option>
-                <option value={'gxl'}>{'GSI GXL'}</option>
-              </select>
+              <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'fpe' })}>FPE</label>
+              <$GSISwitch
+                checked={this.state.wheel === 'gxl'}
+                onChange={e => {
+                  console.log('asdf');
+                  const wheelValue = e.target.checked ? 'gxl' : 'fpe';
+                  this.setState({
+                    lastWheel: this.state.wheel,
+                    wheel: wheelValue,
+                    imageSaveName: 'my-gsi-' + wheelValue + '-wheel-image',
+                    configSaveName: 'my-gsi-' + wheelValue + '-wheel-config',
+                  })
+                }}
+                name="gilad" />
+              <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'gxl' })}>GXL</label>
+            </div>
+            <div>
+              <FormControl variant="outlined" >
+                <$GSISelectLabel id="preset-select-label">Preset:</$GSISelectLabel>
+                <$GSISelect
+                  labelId="preset-select-label"
+                  id="demo-simple-select-helper"
+                  value={this.state.activePreset}
+                  onChange={e => {
+                    console.log('custom select change');
+                    this.setState({
+                      buttons: presets[e.target.value].buttons,
+                      rotaries: presets[e.target.value].rotaries,
+                      activePreset: e.target.value
+                    });
+                  }}
+                >
+                  {Object.keys(presets).map(key =>
+                    <MenuItem key={key} value={key}>
+                      {presets[key].name}
+                    </MenuItem>
+                  )}
+                </$GSISelect>
+              </FormControl>
             </div>
             <div style={{ margin: '10px' }}>
               <label>Presets:</label>
-              <select style={{ marginLeft: '5px' }} onChange={e => {
-                if (e.target.value !== 'none') {
-                  this.setState({ buttons: presets[e.target.value].buttons, rotaries: presets[e.target.value].rotaries });
-                }
-              }}>
+              <select
+                style={{ marginLeft: '5px' }}
+                value={this.state.activePreset}
+                onChange={e => {
+                  this.setState({
+                    buttons: presets[e.target.value].buttons,
+                    rotaries: presets[e.target.value].rotaries,
+                    activePreset: e.target.value
+                  });
+                }}>
                 {Object.keys(presets).map(key =>
                   <option key={key} value={key}>
                     {presets[key].name}

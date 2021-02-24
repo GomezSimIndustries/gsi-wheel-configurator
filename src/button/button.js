@@ -179,8 +179,8 @@ class GSIButton extends Component {
                     !active ? setActive(id) : setActive(-1);
                     e.stopPropagation();
                 }}
-                textColor={textColor
-                }>
+                textColor={textColor}
+                title="Click to customize button">
                 <$StickerContainer
                     color={stickerColor}
                     x={offsetX}
