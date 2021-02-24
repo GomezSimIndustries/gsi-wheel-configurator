@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.d4a5e9ed.chunk.css",
-    "main.js": "./static/js/main.ddd2358e.chunk.js",
-    "main.js.map": "./static/js/main.ddd2358e.chunk.js.map",
+    "main.js": "./static/js/main.745cfa96.chunk.js",
+    "main.js.map": "./static/js/main.745cfa96.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.dad55659.js",
     "runtime-main.js.map": "./static/js/runtime-main.dad55659.js.map",
     "static/css/2.f5984d45.chunk.css": "./static/css/2.f5984d45.chunk.css",
@@ -37,15 +37,15 @@
     "static/media/icon-vol-plus.41767c63.svg": "./static/media/icon-vol-plus.41767c63.svg",
     "static/media/rotary-base.f35508f3.svg": "./static/media/rotary-base.f35508f3.svg",
     "static/media/rotary-center.2a2375bd.svg": "./static/media/rotary-center.2a2375bd.svg",
-    "static/media/rotary-dir.508a49a3.svg": "./static/media/rotary-dir.508a49a3.svg",
-    "static/media/rotary-left.0220a410.svg": "./static/media/rotary-left.0220a410.svg",
-    "static/media/rotary-right.43084e7a.svg": "./static/media/rotary-right.43084e7a.svg"
+    "static/media/rotary-dir.8c89b121.svg": "./static/media/rotary-dir.8c89b121.svg",
+    "static/media/rotary-left.a45f0c4f.svg": "./static/media/rotary-left.a45f0c4f.svg",
+    "static/media/rotary-right.4ab39c15.svg": "./static/media/rotary-right.4ab39c15.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.dad55659.js",
     "static/css/2.f5984d45.chunk.css",
     "static/js/2.22408b0c.chunk.js",
     "static/css/main.d4a5e9ed.chunk.css",
-    "static/js/main.ddd2358e.chunk.js"
+    "static/js/main.745cfa96.chunk.js"
   ]
 }

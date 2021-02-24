@@ -1,13 +1,22 @@
 <svg id="Layer_1" data-name="Layer 1"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.2 11.57">
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.5 11.39">
     <defs>
-        <style>.cls-1,.cls-2{fill:useCurrent;stroke:useCurrent;stroke-miterlimit:10;}.cls-2{stroke-linecap:round;stroke-width:1.08px;}</style>
+        <style>.cls-1{}.cls-2{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:1.08px;}</style>
     </defs>
-    <path id="Path_168" data-name="Path 168" class="cls-1" d="M297.48,424.24v-4.58L295.19,422" transform="translate(-292.4 -418.45)"/>
-    <path id="Path_169" data-name="Path 169" class="cls-1" d="M297.48,427v1.84l-2.29-2.29H292.9V422h.74Z" transform="translate(-292.4 -418.45)"/>
-    <path id="Path_170" data-name="Path 170" class="cls-2" d="M299.77,424.24a5.84,5.84,0,0,0-.86-3.15" transform="translate(-292.4 -418.45)"/>
-    <path id="Path_171" data-name="Path 171" class="cls-2" d="M302.06,424.24a8.67,8.67,0,0,0-1.49-4.81" transform="translate(-292.4 -418.45)"/>
-    <path id="Path_172" data-name="Path 172" class="cls-2" d="M299.77,424.58a5.2,5.2,0,0,1-.23,1.66" transform="translate(-292.4 -418.45)"/>
-    <path id="Path_173" data-name="Path 173" class="cls-2" d="M302.06,424.58a8.47,8.47,0,0,1-.52,3,3.88,3.88,0,0,1-.4.91" transform="translate(-292.4 -418.45)"/>
-    <line id="Line_133" data-name="Line 133" class="cls-2" x1="1.07" y1="0.63" x2="9.09" y2="10.94"/>
+    <path id="Path_168" fill="currentColor" data-name="Path 168" class="cls-1" d="M326.23,198.94v-4.58l-2.29,2.29" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_169" fill="currentColor" data-name="Path 169" class="cls-1" d="M326.23,201.69v1.83l-2.29-2.29h-2.29v-4.58h.74Z" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_170" fill="currentColor" data-name="Path 170" class="cls-2" d="M327.66,195.8" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_170-2" fill="currentColor" data-name="Path 170" class="cls-2" d="M328.52,198.94" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_171" fill="currentColor" data-name="Path 171" class="cls-2" d="M329.32,194.14" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_171-2" fill="currentColor" data-name="Path 171" class="cls-2" d="M330.81,198.94" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_172" fill="currentColor" data-name="Path 172" class="cls-2" d="M328.29,201" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_172-2" fill="currentColor" data-name="Path 172" class="cls-2" d="M328.52,199.29" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173" fill="currentColor" data-name="Path 173" class="cls-2" d="M329.89,203.18" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173-2" fill="currentColor" data-name="Path 173" class="cls-2" d="M330.29,202.27" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173-3" fill="currentColor" data-name="Path 173" class="cls-2" d="M329.32,194.14" transform="translate(-321.65 -193.25)"/>
+    <line id="Line_133" fill="currentColor" data-name="Line 133" class="cls-2" x1="0.57" y1="0.54" x2="8.59" y2="10.85"/>
+    <path id="Path_173-4" fill="currentColor" data-name="Path 173" class="cls-2" d="M329.32,194.14c2.37,3.3.82,8.09.47,9" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173-5" fill="currentColor" data-name="Path 173" class="cls-2" d="M328.15,201.1" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173-6" fill="currentColor" data-name="Path 173" class="cls-2" d="M327.65,195.8" transform="translate(-321.65 -193.25)"/>
+    <path id="Path_173-7" fill="currentColor" data-name="Path 173" class="cls-2" d="M327.65,195.8a6.26,6.26,0,0,1,.5,5.3" transform="translate(-321.65 -193.25)"/>
 </svg>
