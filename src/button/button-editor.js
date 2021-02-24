@@ -131,22 +131,24 @@ class ButtonEditor extends Component {
         super(props);
         this.state = {
             pickerOpen: false,
+            pickerElement: ''
         };
         this.togglePicker = this.togglePicker.bind(this);
     }
 
-    togglePicker(e) {
+    togglePicker(e, text) {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
         this.setState({
-            pickerOpen: !this.state.pickerOpen
+            pickerOpen: !this.state.pickerOpen,
+            pickerElement: this.state.picerOpen ? '' : text
         });
     }
 
     componentDidUpdate(oldProps, oldState) {
         if (oldProps.active && !this.props.active) {
             if (this.state.pickerOpen)
-                this.setState({ pickerOpen: false });
+                this.setState({ pickerOpen: false, pickerElement: '' });
         }
     }
 
@@ -175,9 +177,9 @@ class ButtonEditor extends Component {
                 <$CloseButton onClick={e => setActive(-1)}>x</$CloseButton>
                 <$GroupContainer>
                     <span>Colors</span>
-                    <$RowContainer>
+                    <div>
+                        <span>Button</span>
                         <div>
-                            <span>Button</span>
                             <ColorSelect
                                 setColor={setColor}
                                 index={index}
@@ -185,31 +187,47 @@ class ButtonEditor extends Component {
                                 colors={buttonColors}
                                 type={'buttonColor'} />
                         </div>
-                        <div>
-                            <span>Text</span>
-                            <ColorSelect
-                                setColor={setColor}
+                    </div>
+                    <div>
+                        <span>Text</span>
+                        <$RowContainer>
+                            <$ColorSwatchButton onClick={e => this.togglePicker(e, 'text')} color={textColor} title="Open/Close Color Picker" />
+                            <$HexValue>Value:</$HexValue>
+                            <$ColorPickerContainer
+                                open={this.state.pickerOpen && this.state.pickerElement === 'text'}
+                                id="sketchPicker">
+                                <SketchPicker
+                                    color={textColor}
+                                    disableAlpha={true}
+                                    presetColors={textColors}
+                                    onClick={e => { e.stopPropagation(); }}
+                                    onChange={color => {
+                                        setColor('textColor', index, color.hex);
+                                    }}
+                                    style={{ padding: "15px" }} />
+                                <$CloseButton onClick={e => this.setState({ pickerOpen: false })} dark={true}>x</$CloseButton>
+                            </$ColorPickerContainer>
+                            <input type="text"
                                 value={textColor}
-                                index={index}
-                                color={textColor}
-                                colors={textColors}
-                                type={'textColor'} />
-                        </div>
-                    </$RowContainer>
+                                style={{ width: '65px', marginLeft: '10px' }}
+                                onChange={e => setColor('textColor', index, e.target.value)}
+                                title="Enter Color Hex Value or HTML Color Name" />
+                        </$RowContainer>
+                    </div>
                     <div>
                         <div>
                             <span>Sticker</span>
                         </div>
                         <$RowContainer>
-                            <$ColorSwatchButton onClick={this.togglePicker} color={stickerColor} title="Open/Close Color Picker" />
-                            <$HexValue>Value:
-                        <input type="text"
-                                    value={stickerColor}
-                                    style={{ width: '65px', marginLeft: '10px' }}
-                                    onChange={e => setColor('stickerColor', index, e.target.value)} />
-                            </$HexValue>
+                            <$ColorSwatchButton onClick={e => this.togglePicker(e, 'sticker')} color={stickerColor} title="Open/Close Color Picker" />
+                            <$HexValue>Value:</$HexValue>
+                            <input type="text"
+                                value={stickerColor}
+                                style={{ width: '65px', marginLeft: '10px' }}
+                                onChange={e => setColor('stickerColor', index, e.target.value)}
+                                title="Enter Color Hex Value or HTML Color Name"/>
                             <$ColorPickerContainer
-                                open={this.state.pickerOpen}
+                                open={this.state.pickerOpen && this.state.pickerElement === 'sticker'}
                                 id="sketchPicker">
                                 <SketchPicker
                                     color={stickerColor}

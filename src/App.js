@@ -39,12 +39,6 @@ const $SaveButton = styled.button`
 
 const $ButtonsContainer = styled.div`
   position: relative;
-  & > img {
-    -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
-    filter: url(#drop-shadow);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
-    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#FFFFFF')";
-  }
   
   /* appear - on page load */
   &.wheel-appear {
@@ -334,7 +328,7 @@ class GSIButtonConfig extends Component {
                 <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
                   <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
                   <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
-                    <RotaryDir width="115px" height="85px" style={{ color: "white", fill: 'white !important' }} />
+                    <RotaryDir width="115px" height="85px" style={{ color: this.state.rotaries[2].textColor, fill: 'white !important' }} />
                   </div>
                   {this.state.rotaries.map((rot, idx) =>
                     <GSIRotary

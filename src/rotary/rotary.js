@@ -9,6 +9,9 @@ const $StickerContainer = styled.div`
     left: ${p => p.x}px;
     top: ${p => p.y}px;
     color: ${p => p.color};
+    svg .secondary {
+        color: ${p => p.textColor};
+    }
 `;
 
 const $RotaryContainer = styled.div`
@@ -32,7 +35,7 @@ const $RotaryContainer = styled.div`
     }
 
     &:hover {
-        svg {
+        svg .main {
             stroke: white;
             stroke-width: 3px;
             stroke-linejoin: round;
@@ -40,7 +43,7 @@ const $RotaryContainer = styled.div`
     }
     
     ${p => p.active && css`
-        ${$StickerContainer} > svg {
+        ${$StickerContainer} > svg .main {
             stroke: white !important;
             stroke-width: 3px;
             stroke-linejoin: round;
@@ -129,6 +132,7 @@ class GSIRotary extends Component {
                     x={rotaryConfig[index].sticker.x}
                     y={rotaryConfig[index].sticker.y}
                     color={stickerColor}
+                    textColor={textColor}
                 >
                     <RotarySticker
                         width={rotaryConfig[index].sticker.width}
