@@ -465,7 +465,7 @@ class GSIButtonConfig extends Component {
                 )}
               </select>
             </div>
-            <$SaveButton onClick={e => this.openSave()}>SAVE</$SaveButton>
+            <$SaveButton onClick={e => this.openSave()}>SAVE / LOAD</$SaveButton>
           </div>
         </$BottomControls>
       </$Container>
