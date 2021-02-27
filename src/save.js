@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import * as html2canvas from 'html2canvas';
 
 import { $CloseButton } from './button/button-editor';
 import 'react-responsive-combo-box/dist/index.css'
@@ -13,17 +14,38 @@ const $SaveContainer = styled.div`
     min-width: 500px;
     min-height: 100px;
     left: 50%;
-    bottom: 50%;
+    top: 50%;
     transform: translateX(-50%) translateY(-50%);
     -webkit-box-shadow: 2px 2px 5px 2px #000000;
     box-shadow: 2px 2px 5px 2px #000000;
+    text-align: center;
 
     input {
         margin: 10px;
     }
 `;
 
+const $ImagePreview = styled.div`
+    position: relative;
+    width: auto;
+    height: 150px;
+`;
+
 class SaveControls extends Component {
+
+    componentDidUpdate() {
+
+        html2canvas(document.querySelector("#gsiConfig")).then(canvas => {
+
+            const imagePrev = document.getElementById('imagePreview');
+            var image = new Image();
+            image.id = "pic";
+            image.style.height = '100%';
+
+            image.src = canvas.toDataURL();
+            imagePrev.innerHTML = image.outerHTML;
+        });
+    }
 
     render() {
         const {
@@ -40,7 +62,7 @@ class SaveControls extends Component {
         } = this.props;
         return (
             <$SaveContainer active={active} onClick={(e) => e.stopPropagation()}>
-                <h3>Save your GSI {wheel.toUpperCase()} wheel design!</h3>
+                <p>{'Please save & send both files with your order number to '}<br /><a href="mailto:info@gomezsimindusteries.com">{'info@gomezsimindusteries.com'}</a> for proofing and approval</p>
                 <div>
                     <label htmlFor="imageSaveName">{"Image Name:"}</label>
                     <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {
@@ -65,6 +87,9 @@ class SaveControls extends Component {
                         onChange={e => uploadConfig()} />
                 </div>
                 <$CloseButton onClick={e => setSaveClosed()}>x</$CloseButton>
+                <$ImagePreview id="imagePreview">
+                </$ImagePreview>
+                <p>{'Right click and select "Copy Image" to easily share to social media!'}</p>
             </$SaveContainer>
         );
     }

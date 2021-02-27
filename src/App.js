@@ -61,6 +61,7 @@ const $SaveButton = styled.button`
 
 const $ButtonsContainer = styled.div`
   position: relative;
+  background-color: black;
   
   /* appear - on page load */
   &.wheel-appear {
@@ -227,14 +228,17 @@ class GSIButtonConfig extends Component {
 
   saveImage() {
     html2canvas(document.querySelector("#gsiConfig")).then(canvas => {
+      canvas.style.backgroundColor = 'black';
+
+
       document.body.appendChild(canvas).id = 'gsiPicSave';
       const picDiv = document.getElementById('gsiPicSave');
       picDiv.style.display = "none";
-      picDiv.style.background = "none";
       var a = document.createElement('a');
       a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
       a.download = `${this.state.imageSaveName}.png`;
       a.click();
+      document.body.removeChild(document.getElementById('gsiPicSave'));
     });
   }
 
@@ -325,20 +329,20 @@ class GSIButtonConfig extends Component {
     const presetKeys = Object.entries(presets);
     return (
       <$Container>
-        <SaveControls
-          saveConfig={this.saveConfig}
-          saveImage={this.saveImage}
-          imageSaveName={this.state.imageSaveName}
-          configSaveName={this.state.configSaveName}
-          onImageNameChange={this.onImageNameChange}
-          onConfigNameChange={this.onConfigNameChange}
-          uploadConfig={this.uploadConfig}
-          active={this.state.saveIsOpen}
-          saveConfig={this.saveConfig}
-          wheel={this.state.wheel}
-          setSaveClosed={this.setSaveClosed}
-        />
         <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
+          <SaveControls
+            saveConfig={this.saveConfig}
+            saveImage={this.saveImage}
+            imageSaveName={this.state.imageSaveName}
+            configSaveName={this.state.configSaveName}
+            onImageNameChange={this.onImageNameChange}
+            onConfigNameChange={this.onConfigNameChange}
+            uploadConfig={this.uploadConfig}
+            active={this.state.saveIsOpen}
+            saveConfig={this.saveConfig}
+            wheel={this.state.wheel}
+            setSaveClosed={this.setSaveClosed}
+          />
           <$ConfigLeft>
           </$ConfigLeft>
           <TransitionGroup>
@@ -444,7 +448,6 @@ class GSIButtonConfig extends Component {
               </FormControl>
             </div>
             <div style={{ margin: '10px' }}>
-              <label>Presets:</label>
               <select
                 style={{ marginLeft: '5px' }}
                 value={this.state.activePreset}
@@ -457,7 +460,7 @@ class GSIButtonConfig extends Component {
                 }}>
                 {Object.keys(presets).map(key =>
                   <option key={key} value={key}>
-                    {presets[key].name}
+                    {`${presets[key].name} Preset`}
                   </option>
                 )}
               </select>
