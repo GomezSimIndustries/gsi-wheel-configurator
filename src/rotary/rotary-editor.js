@@ -25,11 +25,11 @@ const $EditorContainer = styled.div`
     min-width: 100px;
     font-size: 14px;
     ${props => props.side === 'left' ? css`
-        right: 18px;
+        right: ${p => p.top ? '20px' : '45px'};
         left: auto;
     ` : css`
         right: auto;
-        left: 60px;
+        left: ${p => p.top ? '85px' : '110px'};
     `}
     -webkit-box-shadow: 2px 2px 5px 2px #000000;
     box-shadow: 2px 2px 5px 2px #000000;
@@ -93,12 +93,14 @@ class RotaryEditor extends Component {
             index,
             side,
             copyRotaryAll,
-            setActive
+            setActive,
+            top
         } = this.props;
         return (
             <$EditorContainer
                 active={active}
                 side={side}
+                top={top}
                 onClick={(e) => e.stopPropagation()}>
                 <$CloseButton onClick={e => setActive(-1)}>x</$CloseButton>
                 <$GroupContainer>

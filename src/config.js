@@ -116,6 +116,45 @@ export const rotaryTexts = {
     },
     multi: {
         text: "MULTI"
+    },
+    clear: {
+        text: "CLR"
+    },
+    fuelPlus: {
+        text: "FUEL +"
+    },
+    fuelMinus: {
+        text: "FUEL -"
+    },
+    tcOne: {
+        text: "TC 1"
+    },
+    tcTwo: {
+        text: "TC 2"
+    },
+    tcOff: {
+        text: "TC OFF"
+    },
+    fMap: {
+        text: "FMAP"
+    },
+    bBox: {
+        text: "BBOX"
+    },
+    tOff: {
+        text: "T OFF"
+    },
+    tOn: {
+        text: "T ON"
+    },
+    fEnd: {
+        text: "F END"
+    },
+    fOff: {
+        text: "F OFF"
+    },
+    disp: {
+        text: "DISP"
     }
 };
 

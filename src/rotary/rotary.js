@@ -162,6 +162,7 @@ class GSIRotary extends Component {
                     setText={setText}
                     index={index}
                     side={side}
+                    top={index === 1 || index === 3}
                     copyRotaryAll={copyRotaryAll}
                     setActive={setActive} />
             </$RotaryContainer>
