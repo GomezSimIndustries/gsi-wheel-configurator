@@ -39,6 +39,66 @@ export const stickerTexts = {
         text: "RESET",
         icon: "Reset",
     },
+    scrollPrev: {
+        text: "SCRL",
+        icon: "Prev",
+    },
+    scrollNext: {
+        text: "SCRL",
+        icon: "Next",
+    },
+    clear: {
+        text: "CLR",
+        icon: "Close",
+    },
+    fuelPlus: {
+        text: "FUEL +",
+        icon: "VolPlus",
+    },
+    fuelMinus: {
+        text: "FUEL -",
+        icon: "VolMinus",
+    },
+    tcOne: {
+        text: "TC 1",
+        icon: "TCOn",
+    },
+    tcTwo: {
+        text: "TC 2",
+        icon: "TCOn",
+    },
+    tcOff: {
+        text: "TC Off",
+        icon: "TCOff",
+    },
+    fMap: {
+        text: "FMAP",
+        icon: "FMap",
+    },
+    bBox: {
+        text: "BBOX",
+        icon: "BBox",
+    },
+    tOff: {
+        text: "T OFF",
+        icon: "TCOff",
+    },
+    tOn: {
+        text: "T ON",
+        icon: "TCOff",
+    },
+    fEnd: {
+        text: "F END",
+        icon: "FEnd",
+    },
+    fOff: {
+        text: "F OFF",
+        icon: "FEnd",
+    },
+    disp: {
+        text: "DISP",
+        icon: "Enable",
+    },
 };
 
 export const rotaryTexts = {
@@ -436,7 +496,7 @@ export const presets = {
                 stickerColor: "#F89521",
                 buttonColor: "black",
                 textColor: "white",
-                text: "volPlus",
+                text: "volMinus",
                 row: 4,
                 side: "left"
             },
@@ -575,7 +635,7 @@ export const presets = {
                 stickerColor: "#8dd46c",
                 buttonColor: "black",
                 textColor: "black",
-                text: "volPlus",
+                text: "volMinus",
                 row: 4,
                 side: "left"
             },
@@ -714,7 +774,7 @@ export const presets = {
                 stickerColor: "yellow",
                 buttonColor: "black",
                 textColor: "black",
-                text: "volPlus",
+                text: "volMinus",
                 row: 4,
                 side: "left"
             },
@@ -853,7 +913,7 @@ export const presets = {
                 stickerColor: "#ff8700",
                 buttonColor: "black",
                 textColor: "black",
-                text: "volPlus",
+                text: "volMinus",
                 row: 4,
                 side: "left"
             },

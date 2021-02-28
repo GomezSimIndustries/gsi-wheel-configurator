@@ -1,0 +1,7 @@
+<svg id="Layer_1" data-name="Layer 1"
+	xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.91 9.91">
+	<defs>
+		<style>.closeClass{fill-rule:evenodd;}</style>
+	</defs>
+	<path fill="currentColor" class="closeClass" d="M405.79,670.72a4.88,4.88,0,0,0-4.1-4.1,5,5,0,0,0-5.7,5.7,4.88,4.88,0,0,0,4.1,4.1A5,5,0,0,0,405.79,670.72Zm-2.2,2.9-.1.2h-1.8l-.9-1-.9,1h-1.6l-.1-.2,1.6-2c-.5-.6-1.1-1.4-1.6-2l.1-.2h1.8l.9,1.1c.3-.4.6-.7.9-1.1h1.6l.1.2-1.6,2C402.49,672.22,403.09,673,403.59,673.62Z" transform="translate(-395.93 -666.56)"/>
+</svg>
