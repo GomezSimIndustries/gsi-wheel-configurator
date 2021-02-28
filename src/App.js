@@ -44,6 +44,9 @@ const $BottomControls = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  position: relative;
+  z-index: 1;
+  margin-top: -70px;
 `;
 
 const $SaveButton = styled.button`
@@ -423,30 +426,6 @@ class GSIButtonConfig extends Component {
                 name="gilad" />
               <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'gxl' })}>GXL</label>
             </div>
-            <div>
-              <FormControl variant="outlined" >
-                <$GSISelectLabel id="preset-select-label">Preset:</$GSISelectLabel>
-                <$GSISelect
-                  labelId="preset-select-label"
-                  id="demo-simple-select-helper"
-                  value={this.state.activePreset}
-                  onChange={e => {
-                    console.log('custom select change');
-                    this.setState({
-                      buttons: presets[e.target.value].buttons,
-                      rotaries: presets[e.target.value].rotaries,
-                      activePreset: e.target.value
-                    });
-                  }}
-                >
-                  {Object.keys(presets).map(key =>
-                    <MenuItem key={key} value={key}>
-                      {presets[key].name}
-                    </MenuItem>
-                  )}
-                </$GSISelect>
-              </FormControl>
-            </div>
             <div style={{ margin: '10px' }}>
               <select
                 style={{ marginLeft: '5px' }}
@@ -458,9 +437,9 @@ class GSIButtonConfig extends Component {
                     activePreset: e.target.value
                   });
                 }}>
-                {Object.keys(presets).map(key =>
+                {Object.keys(presets).map((key, idx) =>
                   <option key={key} value={key}>
-                    {`${presets[key].name} Preset`}
+                    {`${presets[key].name}${idx === 0 ? ' Preset' : ''}`}
                   </option>
                 )}
               </select>

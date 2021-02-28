@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as html2canvas from 'html2canvas';
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+} from "react-share";
 
 import { $CloseButton } from './button/button-editor';
 import 'react-responsive-combo-box/dist/index.css'
@@ -61,36 +67,68 @@ class SaveControls extends Component {
             setSaveClosed
         } = this.props;
         return (
-            <$SaveContainer active={active} onClick={(e) => e.stopPropagation()}>
-                <p>{'Please save & send both files with your order number to '}<br /><a href="mailto:info@gomezsimindusteries.com">{'info@gomezsimindusteries.com'}</a> for proofing and approval</p>
-                <div>
-                    <label htmlFor="imageSaveName">{"Image Name:"}</label>
-                    <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {
-                        onImageNameChange(e.target.value);
-                    }} value={imageSaveName} />
-                    <button onClick={() => saveImage()}>Save Image</button>
-                </div>
-                <div>
-                    <label htmlFor="configSaveName">{"Config Name:"}</label>
-                    <input id="configSaveName" type="text" name="imageSaveName" onChange={e => {
-                        onConfigNameChange(e.target.value);
-                    }} value={configSaveName} />
-                    <button onClick={() => saveConfig()}>Save Config</button>
-                </div>
-                <div>
-                    <label htmlFor="uploadConfig">Upload Config:</label>
-                    <input
-                        type="file"
-                        id="uploadConfig"
-                        name="config"
-                        accept="application/json"
-                        onChange={e => uploadConfig()} />
-                </div>
-                <$CloseButton onClick={e => setSaveClosed()}>x</$CloseButton>
-                <$ImagePreview id="imagePreview">
-                </$ImagePreview>
-                <p>{'Right click and select "Copy Image" to easily share to social media!'}</p>
-            </$SaveContainer>
+            <div style={{
+                position: 'fixed',
+                width: '100%',
+                height: '100%',
+                display: active ? 'block' : 'none',
+                zIndex: 2
+            }}>
+                <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'black',
+                    opacity: '.75',
+                    display: active ? 'block' : 'none',
+                    zIndex: '9'
+                }}></div>
+                <$SaveContainer active={active} onClick={(e) => e.stopPropagation()}>
+                    <p>{'Please save & send both files with your order number to '}<br /><a href="mailto:info@gomezsimindusteries.com">{'info@gomezsimindusteries.com'}</a> for proofing and approval</p>
+                    <div>
+                        <label htmlFor="imageSaveName">{"Image Name:"}</label>
+                        <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {
+                            onImageNameChange(e.target.value);
+                        }} value={imageSaveName} />
+                        <button onClick={() => saveImage()}>Save Image</button>
+                    </div>
+                    <div>
+                        <label htmlFor="configSaveName">{"Config Name:"}</label>
+                        <input id="configSaveName" type="text" name="imageSaveName" onChange={e => {
+                            onConfigNameChange(e.target.value);
+                        }} value={configSaveName} />
+                        <button onClick={() => saveConfig()}>Save Config</button>
+                    </div>
+                    <div>
+                        <label htmlFor="uploadConfig">Upload Config:</label>
+                        <input
+                            type="file"
+                            id="uploadConfig"
+                            name="config"
+                            accept="application/json"
+                            onChange={e => uploadConfig()} />
+                    </div>
+                    <$CloseButton onClick={e => setSaveClosed()}>x</$CloseButton>
+                    <$ImagePreview id="imagePreview">
+                    </$ImagePreview>
+                    <p>{'Right click and select "Copy Image" to easily share to social media!'}</p>
+                    <div>
+                        <TwitterShareButton
+                            title={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customizer your own!`}
+                            hashtags={['MyGSI', 'SimRacing']}
+                            related={['gomezsimracing']}
+                            url={'https://gomezsimindustries.github.io/gsi-wheel-configurator/'}>
+                            <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <FacebookShareButton
+                            quote={'Check out my custom @gomezsimracing GSI wheel! Go customizer your own! \nhttps://gomezsimindustries.github.io/gsi-wheel-configurator/'}
+                            hashtag={'MyGSI'}
+                            url={'https://gomezsimindustries.github.io/gsi-wheel-configurator/'}>
+                            <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                    </div>
+                </$SaveContainer>
+            </div>
         );
     }
 }
