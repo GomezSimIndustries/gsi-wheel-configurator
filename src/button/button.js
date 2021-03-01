@@ -118,9 +118,9 @@ const $TextContainer = styled.div`
     @font-face {
         font-family: 'Adrianna';
         src: local('Adrianna Extra bold'), local('Adrianna-Extra-bold'),
-            url('../Adrianna-Extrabold.woff2') format('woff2'),
-            url('../Adrianna-Extrabold.woff') format('woff'),
-            url('../Adrianna-Extrabold.ttf') format('truetype');
+            url('./Adrianna-Extrabold.woff2') format('woff2'),
+            url('./Adrianna-Extrabold.woff') format('woff'),
+            url('./Adrianna-Extrabold.ttf') format('truetype');
         font-weight: 800;
         font-style: normal;
     }

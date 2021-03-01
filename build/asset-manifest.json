@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.d4a5e9ed.chunk.css",
-    "main.js": "./static/js/main.86d586ce.chunk.js",
-    "main.js.map": "./static/js/main.86d586ce.chunk.js.map",
+    "main.js": "./static/js/main.14dd589c.chunk.js",
+    "main.js.map": "./static/js/main.14dd589c.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.fee4f9b0.js",
     "runtime-main.js.map": "./static/js/runtime-main.fee4f9b0.js.map",
     "static/css/2.f5984d45.chunk.css": "./static/css/2.f5984d45.chunk.css",
@@ -30,7 +30,7 @@
     "static/media/icon-enable.9611c06c.svg": "./static/media/icon-enable.9611c06c.svg",
     "static/media/icon-flash.5066b16b.svg": "./static/media/icon-flash.5066b16b.svg",
     "static/media/icon-fuel-off.88d788e7.svg": "./static/media/icon-fuel-off.88d788e7.svg",
-    "static/media/icon-fuel-on.94a4d8f9.svg": "./static/media/icon-fuel-on.94a4d8f9.svg",
+    "static/media/icon-fuel-on.4dae8a2c.svg": "./static/media/icon-fuel-on.4dae8a2c.svg",
     "static/media/icon-mute.88f1f41c.svg": "./static/media/icon-mute.88f1f41c.svg",
     "static/media/icon-next.be109ca7.svg": "./static/media/icon-next.be109ca7.svg",
     "static/media/icon-pit-limit.69e0b0f4.svg": "./static/media/icon-pit-limit.69e0b0f4.svg",
@@ -52,6 +52,6 @@
     "static/css/2.f5984d45.chunk.css",
     "static/js/2.24f8bfcc.chunk.js",
     "static/css/main.d4a5e9ed.chunk.css",
-    "static/js/main.86d586ce.chunk.js"
+    "static/js/main.14dd589c.chunk.js"
   ]
 }
