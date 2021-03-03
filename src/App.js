@@ -16,10 +16,13 @@ import { RotaryBase, RotaryDir } from './stickers';
 import SaveControls from './save';
 
 const $Container = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  flex-direction: row;
+  /* justify-content: center;
+  align-content: center; */
   padding: 10px;
   input[type=text], select {
     background-color: #181818;
@@ -36,6 +39,11 @@ const $Container = styled.div`
     background-size: 15px 10px;
     padding-right: 30px;
   }
+`;
+
+const $ScrollContainer = styled.div`
+  width: 1338px;
+  height: auto;
 `;
 
 const $BottomControls = styled.div`
@@ -332,121 +340,123 @@ class GSIButtonConfig extends Component {
     const presetKeys = Object.entries(presets);
     return (
       <$Container>
-        <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
-          <SaveControls
-            saveConfig={this.saveConfig}
-            saveImage={this.saveImage}
-            imageSaveName={this.state.imageSaveName}
-            configSaveName={this.state.configSaveName}
-            onImageNameChange={this.onImageNameChange}
-            onConfigNameChange={this.onConfigNameChange}
-            uploadConfig={this.uploadConfig}
-            active={this.state.saveIsOpen}
-            saveConfig={this.saveConfig}
-            wheel={this.state.wheel}
-            setSaveClosed={this.setSaveClosed}
-          />
-          <$ConfigLeft>
-          </$ConfigLeft>
-          <TransitionGroup>
-            <CSSTransition
-              // in={this.state.wheel !== this.state.lastWheel}
-              key={this.state.wheel}
-              appear={true}
-              timeout={2000}
-              classNames="wheel"
-            >
-              <$ButtonsContainer id="gsiConfig">
-                <img src={`./images/${this.state.wheel}-trans-buttons-base.png`} alt='button base' />
+        <$ScrollContainer>
+          <$ConfigContainer onClick={() => this.setState({ activeButtonId: -1, saveIsOpen: false })}>
+            <SaveControls
+              saveConfig={this.saveConfig}
+              saveImage={this.saveImage}
+              imageSaveName={this.state.imageSaveName}
+              configSaveName={this.state.configSaveName}
+              onImageNameChange={this.onImageNameChange}
+              onConfigNameChange={this.onConfigNameChange}
+              uploadConfig={this.uploadConfig}
+              active={this.state.saveIsOpen}
+              saveConfig={this.saveConfig}
+              wheel={this.state.wheel}
+              setSaveClosed={this.setSaveClosed}
+            />
+            <$ConfigLeft>
+            </$ConfigLeft>
+            <TransitionGroup>
+              <CSSTransition
+                // in={this.state.wheel !== this.state.lastWheel}
+                key={this.state.wheel}
+                appear={true}
+                timeout={2000}
+                classNames="wheel"
+              >
+                <$ButtonsContainer id="gsiConfig">
+                  <img src={`./images/${this.state.wheel}-trans-buttons-base.png`} alt='button base' />
 
-                {this.state.buttons.map((btn, idx) =>
-                  <GSIButton
-                    key={`btn-${idx}-${btn.row}-${btn.side}`}
-                    index={idx}
-                    id={btn.id}
-                    stickerColor={btn.stickerColor}
-                    buttonColor={btn.buttonColor}
-                    textColor={btn.textColor}
-                    text={btn.text}
-                    row={btn.row}
-                    side={btn.side}
-                    setColor={this.setColor}
-                    setText={this.setText}
-                    active={this.state.activeButtonId === btn.id}
-                    setActive={this.setActive}
-                    copyButtonAll={this.copyButtonAll}
-                    copyButtonRow={this.copyButtonRow}
-                  />
-                )}
-                <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
-                  <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
-                  <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
-                    <RotaryDir width="115px" height="85px" style={{ color: this.state.rotaries[2].textColor, fill: 'white !important' }} />
-                  </div>
-                  {this.state.rotaries.map((rot, idx) =>
-                    <GSIRotary
-                      key={`rotary-${idx}`}
+                  {this.state.buttons.map((btn, idx) =>
+                    <GSIButton
+                      key={`btn-${idx}-${btn.row}-${btn.side}`}
                       index={idx}
-                      id={rot.id}
-                      stickerColor={rot.stickerColor}
-                      text={rot.text}
-                      textColor={rot.textColor}
-                      rotaryColor={rot.rotaryColor}
-                      active={this.state.activeButtonId === rot.id}
-                      setColor={this.setRotaryColor}
-                      setText={this.setRotaryText}
+                      id={btn.id}
+                      stickerColor={btn.stickerColor}
+                      buttonColor={btn.buttonColor}
+                      textColor={btn.textColor}
+                      text={btn.text}
+                      row={btn.row}
+                      side={btn.side}
+                      setColor={this.setColor}
+                      setText={this.setText}
+                      active={this.state.activeButtonId === btn.id}
                       setActive={this.setActive}
-                      copyRotaryAll={this.copyRotaryAll}
+                      copyButtonAll={this.copyButtonAll}
+                      copyButtonRow={this.copyButtonRow}
                     />
                   )}
-                </$RotaryContainer>
-              </$ButtonsContainer>
-            </CSSTransition>
-          </TransitionGroup>
-          <$ConfigRight>
-          </$ConfigRight>
-        </$ConfigContainer >
+                  <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
+                    <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
+                    <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
+                      <RotaryDir width="115px" height="85px" style={{ color: this.state.rotaries[2].textColor, fill: 'white !important' }} />
+                    </div>
+                    {this.state.rotaries.map((rot, idx) =>
+                      <GSIRotary
+                        key={`rotary-${idx}`}
+                        index={idx}
+                        id={rot.id}
+                        stickerColor={rot.stickerColor}
+                        text={rot.text}
+                        textColor={rot.textColor}
+                        rotaryColor={rot.rotaryColor}
+                        active={this.state.activeButtonId === rot.id}
+                        setColor={this.setRotaryColor}
+                        setText={this.setRotaryText}
+                        setActive={this.setActive}
+                        copyRotaryAll={this.copyRotaryAll}
+                      />
+                    )}
+                  </$RotaryContainer>
+                </$ButtonsContainer>
+              </CSSTransition>
+            </TransitionGroup>
+            <$ConfigRight>
+            </$ConfigRight>
+          </$ConfigContainer >
 
-        <$BottomControls>
-          <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-            <div style={{ margin: '10px' }}>
-              <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'fpe' })}>FPE</label>
-              <$GSISwitch
-                checked={this.state.wheel === 'gxl'}
-                onChange={e => {
-                  console.log('asdf');
-                  const wheelValue = e.target.checked ? 'gxl' : 'fpe';
-                  this.setState({
-                    lastWheel: this.state.wheel,
-                    wheel: wheelValue,
-                    imageSaveName: 'my-gsi-' + wheelValue + '-wheel-image',
-                    configSaveName: 'my-gsi-' + wheelValue + '-wheel-config',
-                  })
-                }}
-                name="gilad" />
-              <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'gxl' })}>GXL</label>
+          <$BottomControls>
+            <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+              <div style={{ margin: '10px' }}>
+                <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'fpe' })}>FPE</label>
+                <$GSISwitch
+                  checked={this.state.wheel === 'gxl'}
+                  onChange={e => {
+                    console.log('asdf');
+                    const wheelValue = e.target.checked ? 'gxl' : 'fpe';
+                    this.setState({
+                      lastWheel: this.state.wheel,
+                      wheel: wheelValue,
+                      imageSaveName: 'my-gsi-' + wheelValue + '-wheel-image',
+                      configSaveName: 'my-gsi-' + wheelValue + '-wheel-config',
+                    })
+                  }}
+                  name="gilad" />
+                <label onClick={() => this.setState({ lastWheel: this.state.wheel, wheel: 'gxl' })}>GXL</label>
+              </div>
+              <div style={{ margin: '10px' }}>
+                <select
+                  style={{ marginLeft: '5px' }}
+                  value={this.state.activePreset}
+                  onChange={e => {
+                    this.setState({
+                      buttons: presets[e.target.value].buttons,
+                      rotaries: presets[e.target.value].rotaries,
+                      activePreset: e.target.value
+                    });
+                  }}>
+                  {Object.keys(presets).map((key, idx) =>
+                    <option key={key} value={key}>
+                      {`${presets[key].name}${idx === 0 ? ' Preset' : ''}`}
+                    </option>
+                  )}
+                </select>
+              </div>
+              <$SaveButton onClick={e => this.openSave()}>SAVE / LOAD</$SaveButton>
             </div>
-            <div style={{ margin: '10px' }}>
-              <select
-                style={{ marginLeft: '5px' }}
-                value={this.state.activePreset}
-                onChange={e => {
-                  this.setState({
-                    buttons: presets[e.target.value].buttons,
-                    rotaries: presets[e.target.value].rotaries,
-                    activePreset: e.target.value
-                  });
-                }}>
-                {Object.keys(presets).map((key, idx) =>
-                  <option key={key} value={key}>
-                    {`${presets[key].name}${idx === 0 ? ' Preset' : ''}`}
-                  </option>
-                )}
-              </select>
-            </div>
-            <$SaveButton onClick={e => this.openSave()}>SAVE / LOAD</$SaveButton>
-          </div>
-        </$BottomControls>
+          </$BottomControls>
+        </$ScrollContainer>
       </$Container>
     );
   }
