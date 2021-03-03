@@ -1055,5 +1055,144 @@ export const presets = {
                 text: "menu"
             }
         ]
+    },
+    crimson: {
+        name: "Crimson",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "white",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "white",
+                text: "volMinus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "white",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "white",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "#E9262A",
+                buttonColor: "red",
+                textColor: "white",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "#E9262A",
+                rotaryColor: "red",
+                textColor: "white",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "#E9262A",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "#E9262A",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "#E9262A",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "#E9262A",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "#E9262A",
+                rotaryColor: "black",
+                textColor: "white",
+                text: "menu"
+            }
+        ]
     }
 };

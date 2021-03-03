@@ -117,13 +117,13 @@ class SaveControls extends Component {
                             title={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customizer your own!`}
                             hashtags={['MyGSI', 'SimRacing']}
                             related={['gomezsimracing']}
-                            url={'https://gomezsimindustries.github.io/gsi-wheel-configurator/'}>
+                            url={'https://gomezsimindustries.com/wheel-config'}>
                             <TwitterIcon size={32} round />
                         </TwitterShareButton>
                         <FacebookShareButton
-                            quote={'Check out my custom @gomezsimracing GSI wheel! Go customizer your own! \nhttps://gomezsimindustries.github.io/gsi-wheel-configurator/'}
+                            quote={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customizer your own! \nhttps://gomezsimindustries.com/wheel-config`}
                             hashtag={'MyGSI'}
-                            url={'https://gomezsimindustries.github.io/gsi-wheel-configurator/'}>
+                            url={'https://gomezsimindustries.com/wheel-config'}>
                             <FacebookIcon size={32} round />
                         </FacebookShareButton>
                     </div>

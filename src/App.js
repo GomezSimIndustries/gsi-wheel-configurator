@@ -44,6 +44,7 @@ const $Container = styled.div`
 const $ScrollContainer = styled.div`
   width: 1338px;
   height: auto;
+  margin: auto;
 `;
 
 const $BottomControls = styled.div`
