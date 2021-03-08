@@ -42,7 +42,6 @@ class SaveControls extends Component {
     componentDidUpdate() {
 
         html2canvas(document.querySelector("#gsiConfig")).then(canvas => {
-
             const imagePrev = document.getElementById('imagePreview');
             var image = new Image();
             image.id = "pic";
@@ -114,14 +113,14 @@ class SaveControls extends Component {
                     <p>{'Right click and select "Copy Image" to easily share to social media!'}</p>
                     <div>
                         <TwitterShareButton
-                            title={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customizer your own!`}
+                            title={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customize your own!`}
                             hashtags={['MyGSI', 'SimRacing']}
                             related={['gomezsimracing']}
                             url={'https://gomezsimindustries.com/wheel-config'}>
                             <TwitterIcon size={32} round />
                         </TwitterShareButton>
                         <FacebookShareButton
-                            quote={`Check out my custom @gomezsimracing GSI ${wheel.toUpperCase()} wheel! Go customizer your own! \nhttps://gomezsimindustries.com/wheel-config`}
+                            quote={`Check out my custom GSI ${wheel.toUpperCase()} wheel! Go customize your own! \nhttps://gomezsimindustries.com/wheel-config`}
                             hashtag={'MyGSI'}
                             url={'https://gomezsimindustries.com/wheel-config'}>
                             <FacebookIcon size={32} round />

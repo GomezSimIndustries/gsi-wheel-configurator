@@ -21,10 +21,12 @@ export const stickerTexts = {
     },
     volPlus: {
         text: "VOL",
+        displayText: 'VOL (Plus)',
         icon: "VolPlus",
     },
     volMinus: {
         text: "VOL",
+        displayText: 'VOL (Minus)',
         icon: "VolMinus",
     },
     prev: {
@@ -41,10 +43,12 @@ export const stickerTexts = {
     },
     scrollPrev: {
         text: "SCRL",
+        displayText: "SCRL (Left)",
         icon: "Prev",
     },
     scrollNext: {
         text: "SCRL",
+        displayText: "SCRL (Right)",
         icon: "Next",
     },
     clear: {

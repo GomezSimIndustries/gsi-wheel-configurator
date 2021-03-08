@@ -75,8 +75,12 @@ const $ButtonsContainer = styled.div`
   position: relative;
   background-color: black;
   
-  /* appear - on page load */
-  &.wheel-appear {
+
+`;
+
+const $AnimationContainer = styled.div`
+    /* appear - on page load */
+    &.wheel-appear {
       opacity: 0;
       transform: scale(0.01);
   }
@@ -110,6 +114,7 @@ const $ButtonsContainer = styled.div`
     display: none;
   }
 `;
+
 const $ConfigContainer = styled.div`
   position: relative;
   display: flex;
@@ -173,8 +178,8 @@ class GSIButtonConfig extends Component {
       configSaveName: 'my-gsi-fpe-wheel-config',
       dashVersion: "default",
       saveIsOpen: false,
-      buttons: presets.default.buttons,
-      rotaries: presets.default.rotaries
+      buttons: JSON.parse(JSON.stringify(presets.default.buttons)),
+      rotaries: JSON.parse(JSON.stringify(presets.default.rotaries))
     };
     this.setColor = this.setColor.bind(this);
     this.setText = this.setText.bind(this);
@@ -193,7 +198,16 @@ class GSIButtonConfig extends Component {
     this.loadPreset = this.loadPreset.bind(this);
     this.setSaveClosed = this.setSaveClosed.bind(this);
 
-    this.loadPreset('default');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.activePreset !== 'custom') {
+      if (prevState.buttons !== this.state.buttons || prevState.rotaries !== this.state.rotaries) {
+        this.setState({
+          activePreset: 'custom'
+        });
+      }
+    }
   }
 
   setColor(type, index, color) {
@@ -247,8 +261,8 @@ class GSIButtonConfig extends Component {
       const picDiv = document.getElementById('gsiPicSave');
       picDiv.style.display = "none";
       var a = document.createElement('a');
-      a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-      a.download = `${this.state.imageSaveName}.png`;
+      a.href = canvas.toDataURL("image/jpg", 0.2).replace("image/jpg", "image/octet-stream");
+      a.download = `${this.state.imageSaveName}.jpg`;
       a.click();
       document.body.removeChild(document.getElementById('gsiPicSave'));
     });
@@ -330,7 +344,7 @@ class GSIButtonConfig extends Component {
   }
 
   loadPreset(preset) {
-    this.setState({ buttons: presets[preset].buttons, rotaries: presets[preset].rotaries });
+    this.setState({ buttons: JSON.parse(JSON.stringify(presets[preset].buttons)), rotaries: JSON.parse(JSON.stringify(presets[preset].rotaries)) });
   }
 
   setSaveClosed() {
@@ -366,51 +380,53 @@ class GSIButtonConfig extends Component {
                 timeout={2000}
                 classNames="wheel"
               >
-                <$ButtonsContainer id="gsiConfig">
-                  <img src={`./images/${this.state.wheel}-trans-buttons-base.png`} alt='button base' />
+                <$AnimationContainer id="gsiConfig" style={{ padding: '30px', backgroundColor: 'black' }}>
+                  <$ButtonsContainer>
+                    <img src={`./images/${this.state.wheel}-trans-buttons-base.png`} alt='button base' />
 
-                  {this.state.buttons.map((btn, idx) =>
-                    <GSIButton
-                      key={`btn-${idx}-${btn.row}-${btn.side}`}
-                      index={idx}
-                      id={btn.id}
-                      stickerColor={btn.stickerColor}
-                      buttonColor={btn.buttonColor}
-                      textColor={btn.textColor}
-                      text={btn.text}
-                      row={btn.row}
-                      side={btn.side}
-                      setColor={this.setColor}
-                      setText={this.setText}
-                      active={this.state.activeButtonId === btn.id}
-                      setActive={this.setActive}
-                      copyButtonAll={this.copyButtonAll}
-                      copyButtonRow={this.copyButtonRow}
-                    />
-                  )}
-                  <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
-                    <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
-                    <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
-                      <RotaryDir width="115px" height="85px" style={{ color: this.state.rotaries[2].textColor, fill: 'white !important' }} />
-                    </div>
-                    {this.state.rotaries.map((rot, idx) =>
-                      <GSIRotary
-                        key={`rotary-${idx}`}
+                    {this.state.buttons.map((btn, idx) =>
+                      <GSIButton
+                        key={`btn-${idx}-${btn.row}-${btn.side}`}
                         index={idx}
-                        id={rot.id}
-                        stickerColor={rot.stickerColor}
-                        text={rot.text}
-                        textColor={rot.textColor}
-                        rotaryColor={rot.rotaryColor}
-                        active={this.state.activeButtonId === rot.id}
-                        setColor={this.setRotaryColor}
-                        setText={this.setRotaryText}
+                        id={btn.id}
+                        stickerColor={btn.stickerColor}
+                        buttonColor={btn.buttonColor}
+                        textColor={btn.textColor}
+                        text={btn.text}
+                        row={btn.row}
+                        side={btn.side}
+                        setColor={this.setColor}
+                        setText={this.setText}
+                        active={this.state.activeButtonId === btn.id}
                         setActive={this.setActive}
-                        copyRotaryAll={this.copyRotaryAll}
+                        copyButtonAll={this.copyButtonAll}
+                        copyButtonRow={this.copyButtonRow}
                       />
                     )}
-                  </$RotaryContainer>
-                </$ButtonsContainer>
+                    <$RotaryContainer isGXL={this.state.wheel === 'gxl'}>
+                      <RotaryBase height="194px" width="303px" style={{ color: "black" }} />
+                      <div style={{ position: 'absolute', left: "95px", top: "7px" }}>
+                        <RotaryDir width="115px" height="85px" style={{ color: this.state.rotaries[2].textColor, fill: 'white !important' }} />
+                      </div>
+                      {this.state.rotaries.map((rot, idx) =>
+                        <GSIRotary
+                          key={`rotary-${idx}`}
+                          index={idx}
+                          id={rot.id}
+                          stickerColor={rot.stickerColor}
+                          text={rot.text}
+                          textColor={rot.textColor}
+                          rotaryColor={rot.rotaryColor}
+                          active={this.state.activeButtonId === rot.id}
+                          setColor={this.setRotaryColor}
+                          setText={this.setRotaryText}
+                          setActive={this.setActive}
+                          copyRotaryAll={this.copyRotaryAll}
+                        />
+                      )}
+                    </$RotaryContainer>
+                  </$ButtonsContainer>
+                </$AnimationContainer>
               </CSSTransition>
             </TransitionGroup>
             <$ConfigRight>
@@ -442,16 +458,18 @@ class GSIButtonConfig extends Component {
                   value={this.state.activePreset}
                   onChange={e => {
                     this.setState({
-                      buttons: presets[e.target.value].buttons,
-                      rotaries: presets[e.target.value].rotaries,
                       activePreset: e.target.value
                     });
+                    this.loadPreset(e.target.value)
                   }}>
                   {Object.keys(presets).map((key, idx) =>
                     <option key={key} value={key}>
                       {`${presets[key].name}${idx === 0 ? ' Preset' : ''}`}
                     </option>
                   )}
+                  <option value={'custom'}>
+                    {'Custom'}
+                  </option>
                 </select>
               </div>
               <$SaveButton onClick={e => this.openSave()}>SAVE / LOAD</$SaveButton>

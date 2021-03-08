@@ -10,7 +10,7 @@ const TextSelect = ({ setText, index, text, texts }) => {
         }>
             {entries.map(([key, txt], idx) => {
                 return (
-                    <option key={idx} value={key}>{txt.text}</option>
+                    <option key={idx} value={key}>{txt.displayText ? txt.displayText : txt.text}</option>
                 );
             }
             )}
