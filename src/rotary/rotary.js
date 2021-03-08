@@ -157,7 +157,7 @@ class GSIRotary extends Component {
                     rotaryColor={rotaryColor}
                     stickerColor={stickerColor}
                     textColor={textColor}
-                    text={rotaryTexts[text].text}
+                    text={text}
                     setColor={setColor}
                     setText={setText}
                     index={index}
