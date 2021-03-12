@@ -60,7 +60,8 @@ class RotaryEditor extends Component {
         super(props);
         this.state = {
             pickerOpen: false,
-            pickerElement: ''
+            pickerElement: '',
+            customText: ''
         };
         this.togglePicker = this.togglePicker.bind(this);
     }
@@ -90,11 +91,14 @@ class RotaryEditor extends Component {
             active,
             setColor,
             setText,
+            clearCustomText,
+            setCustomText,
             index,
             side,
             copyRotaryAll,
             setActive,
-            top
+            top,
+            id,
         } = this.props;
         return (
             <$EditorContainer
@@ -174,7 +178,29 @@ class RotaryEditor extends Component {
                 </$GroupContainer>
                 <$GroupContainer>
                     <span>Function</span>
-                    <TextSelect setText={setText}
+                    <input
+                        type="text"
+                        maxLength="5"
+                        style={{ marginBottom: '10px' }}
+                        value={this.state.customText}
+                        onChange={
+                            (event) => {
+                                this.setState({
+                                    customText: event.target.value
+                                });
+                            }} />
+                    <button
+                        onClick={event => {
+                            if (this.state.customText !== '') {
+                                setCustomText(index, this.state.customText);
+                            }
+                        }}
+                        style={{ marginBottom: '10px' }}>Set Custom</button>
+                    <TextSelect
+                        setText={(index, text) => {
+                            clearCustomText(index);
+                            setText(index, text);
+                        }}
                         value={text}
                         index={index}
                         text={text}
