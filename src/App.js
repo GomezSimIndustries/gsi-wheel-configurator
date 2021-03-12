@@ -183,6 +183,8 @@ class GSIButtonConfig extends Component {
     };
     this.setColor = this.setColor.bind(this);
     this.setText = this.setText.bind(this);
+    this.setCustomRotaryText = this.setCustomRotaryText.bind(this);
+    this.clearCustomRotaryText = this.clearCustomRotaryText.bind(this);
     this.setRotaryColor = this.setRotaryColor.bind(this);
     this.setRotaryText = this.setRotaryText.bind(this);
     this.setActive = this.setActive.bind(this);
@@ -237,6 +239,24 @@ class GSIButtonConfig extends Component {
   setRotaryText(index, text) {
     let newRotaries = [...this.state.rotaries];
     newRotaries[index].text = text;
+    this.setState({
+      rotaries: newRotaries
+    });
+  }
+
+  setCustomRotaryText(index, text) {
+    let newRotaries = [...this.state.rotaries];
+    newRotaries[index].text = 'custom';
+    newRotaries[index].customText = text;
+    this.setState({
+      rotaries: newRotaries
+    });
+  }
+
+  clearCustomRotaryText(index) {
+    let newRotaries = [...this.state.rotaries];
+    newRotaries[index].text = 'custom';
+    newRotaries[index].customText = null;
     this.setState({
       rotaries: newRotaries
     });
@@ -415,11 +435,14 @@ class GSIButtonConfig extends Component {
                           id={rot.id}
                           stickerColor={rot.stickerColor}
                           text={rot.text}
+                          customText={rot.customText || ''}
                           textColor={rot.textColor}
                           rotaryColor={rot.rotaryColor}
                           active={this.state.activeButtonId === rot.id}
                           setColor={this.setRotaryColor}
                           setText={this.setRotaryText}
+                          setCustomText={this.setCustomRotaryText}
+                          clearCustomText={this.clearCustomRotaryText}
                           setActive={this.setActive}
                           copyRotaryAll={this.copyRotaryAll}
                         />

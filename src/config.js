@@ -159,6 +159,9 @@ export const rotaryTexts = {
     },
     disp: {
         text: "DISP"
+    },
+    custom: {
+        text: "**CUSTOM**"
     }
 };
 

@@ -93,7 +93,10 @@ class GSIRotary extends Component {
             stickerColor,
             textColor,
             text,
+            customText,
             setText,
+            setCustomText,
+            clearCustomText,
             active,
             setActive,
             setColor,
@@ -148,7 +151,7 @@ class GSIRotary extends Component {
                         y={rotaryConfig[index].text.y}
                         color={textColor}
                         funky={index === 0}>
-                        {rotaryTexts[text].text}
+                        {customText ? customText : rotaryTexts[text].text}
                     </$TextContainer>
                 )}
                 <RotaryEditor
@@ -160,6 +163,8 @@ class GSIRotary extends Component {
                     text={text}
                     setColor={setColor}
                     setText={setText}
+                    setCustomText={setCustomText}
+                    clearCustomText={clearCustomText}
                     index={index}
                     side={side}
                     top={index === 1 || index === 3}
