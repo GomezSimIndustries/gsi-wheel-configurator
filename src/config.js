@@ -103,6 +103,10 @@ export const stickerTexts = {
         text: "DISP",
         icon: "Enable",
     },
+    custom: {
+        text: "**CUSTOM**",
+        icon: "Enable"
+    }
 };
 
 export const rotaryTexts = {

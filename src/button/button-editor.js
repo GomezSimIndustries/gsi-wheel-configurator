@@ -2,8 +2,11 @@ import React, { Component, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ColorSelect from '../color-select';
 import TextSelect from '../text-select';
+import * as Icons from '../icons';
 import { buttonColors, stickerColors, textColors, stickerTexts } from '../config';
 import { SketchPicker } from 'react-color';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const $EditorContainer = styled.div`
     ${p => p.row === 5 && css`
@@ -39,6 +42,14 @@ const $EditorContainer = styled.div`
     button {
         font-size: 13px;
     }
+`;
+
+const $IconSelect = styled(Select)`
+  color: white;
+  .MuiSelect-icon, .MuiInput-input {
+      color: white;
+  }
+  border: 1px solid white;
 `;
 
 export const $GroupContainer = styled.div`
@@ -131,7 +142,9 @@ class ButtonEditor extends Component {
         super(props);
         this.state = {
             pickerOpen: false,
-            pickerElement: ''
+            pickerElement: '',
+            customText: '',
+            customIcon: 'none'
         };
         this.togglePicker = this.togglePicker.bind(this);
     }
@@ -161,6 +174,10 @@ class ButtonEditor extends Component {
             active,
             setColor,
             setText,
+            setCustomText,
+            clearCustomText,
+            setCustomIcon,
+            clearCustomIcon,
             index,
             side,
             copyButtonAll,
@@ -168,6 +185,7 @@ class ButtonEditor extends Component {
             row,
             setActive
         } = this.props;
+        const entries = Object.entries(stickerTexts);
         return (
             <$EditorContainer
                 active={active}
@@ -256,13 +274,54 @@ class ButtonEditor extends Component {
                 </$GroupContainer>
                 <$GroupContainer>
                     <span>Function</span>
-                    <TextSelect setText={setText}
+                    <input
+                        type="text"
+                        maxLength="5"
+                        style={{ marginBottom: '10px' }}
+                        value={this.state.customText}
+                        onChange={
+                            (event) => {
+                                this.setState({
+                                    customText: event.target.value
+                                });
+                            }} />
+                    <$IconSelect
+                        value={this.state.customIcon}
+                        onChange={event => {
+                            this.setState({
+                                customIcon: event.target.value
+                            })
+                        }}>
+                        < MenuItem value={'none'}>{'  Icon - None'}</MenuItem>
+                        {entries.map(txt => {
+                            const NewIcon = Icons[stickerTexts[txt[0]].icon];
+                            console.log(stickerTexts[txt[0]].icon);
+                            return (
+                                <MenuItem value={txt[0]}><NewIcon height="30px" width="30px" color={'red'} style={{ height: '30px', width: '30px', paddingLeft: '10px' }} /></MenuItem>
+                            );
+                        }
+                        )}
+                    </$IconSelect>
+                    <button
+                        onClick={event => {
+                            if (this.state.customText !== '') {
+                                setCustomText(index, this.state.customText);
+                                setCustomIcon(index, this.state.customIcon);
+                            }
+                        }}
+                        style={{ marginBottom: '10px' }}>Set Custom</button>
+                    <TextSelect
+                        setText={(index, text) => {
+                            clearCustomText(index);
+                            clearCustomIcon(index);
+                            setText(index, text);
+                        }}
                         value={text}
                         index={index}
                         text={text}
                         texts={stickerTexts} />
                 </$GroupContainer>
-            </$EditorContainer>
+            </$EditorContainer >
         );
     }
 }

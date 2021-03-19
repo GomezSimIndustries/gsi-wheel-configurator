@@ -145,7 +145,13 @@ class GSIButton extends Component {
             textColor,
             text,
             setColor,
+            customText,
+            customIcon,
             setText,
+            setCustomText,
+            clearCustomText,
+            setCustomIcon,
+            clearCustomIcon,
             index,
             id,
             active,
@@ -155,7 +161,20 @@ class GSIButton extends Component {
         } = this.props;
         const sideText = side.charAt(0).toUpperCase() + side.slice(1);
         const Sticker = Stickers[`Row${row}${sideText}`];
-        const Icon = Icons[stickerTexts[text].icon];
+        let Icon;
+        if (customText) {
+            if (customIcon) {
+                Icon = Icons[stickerTexts[customIcon].icon];
+            } else {
+                Icon = Icons[stickerTexts['custom'].icon];
+            }
+        } else {
+            Icon = Icons[stickerTexts[text].icon];
+        }
+        let CustomIcon;
+        if (customIcon) {
+            CustomIcon = Icons[stickerTexts[customIcon].icon];
+        }
         const height = config[`Row${row}`].stickerHeight;
         const width = config[`Row${row}`].stickerWidth;
         let offsetX;
@@ -206,7 +225,7 @@ class GSIButton extends Component {
                                 <Icon height="15px" width="15px" color={textColor} />
                             </$IconContainer>
                             <div>
-                                {stickerTexts[text].text}
+                                {customText ? customText : stickerTexts[text].text}
                             </div>
                         </>
                     ) : (
@@ -214,7 +233,7 @@ class GSIButton extends Component {
                                 {row === 2 ? (
                                     <>
                                         <div>
-                                            {stickerTexts[text].text}
+                                            {customText ? customText : stickerTexts[text].text}
                                         </div>
                                         <$IconContainer>
                                             <Icon height="15px" width="15px" color={textColor} />
@@ -222,7 +241,7 @@ class GSIButton extends Component {
                                     </>
                                 ) : (
                                         <div>
-                                            {stickerTexts[text].text}
+                                            {customText ? customText : stickerTexts[text].text}
                                         </div>
                                     )}
                             </>
@@ -245,8 +264,13 @@ class GSIButton extends Component {
                     stickerColor={stickerColor}
                     textColor={textColor}
                     text={text}
+                    customIcon={customIcon}
                     setColor={setColor}
                     setText={setText}
+                    setCustomText={setCustomText}
+                    clearCustomText={clearCustomText}
+                    setCustomIcon={setCustomIcon}
+                    clearCustomIcon={clearCustomIcon}
                     index={index}
                     side={side}
                     copyButtonAll={copyButtonAll}

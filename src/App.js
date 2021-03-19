@@ -185,6 +185,10 @@ class GSIButtonConfig extends Component {
     this.setText = this.setText.bind(this);
     this.setCustomRotaryText = this.setCustomRotaryText.bind(this);
     this.clearCustomRotaryText = this.clearCustomRotaryText.bind(this);
+    this.setCustomButtonText = this.setCustomButtonText.bind(this);
+    this.clearCustomButtonText = this.clearCustomButtonText.bind(this);
+    this.setCustomButtonIcon = this.setCustomButtonIcon.bind(this);
+    this.clearCustomButtonIcon = this.clearCustomButtonIcon.bind(this);
     this.setRotaryColor = this.setRotaryColor.bind(this);
     this.setRotaryText = this.setRotaryText.bind(this);
     this.setActive = this.setActive.bind(this);
@@ -259,6 +263,40 @@ class GSIButtonConfig extends Component {
     newRotaries[index].customText = null;
     this.setState({
       rotaries: newRotaries
+    });
+  }
+
+  setCustomButtonText(index, text) {
+    let newButtons = [...this.state.buttons];
+    newButtons[index].text = 'custom';
+    newButtons[index].customText = text;
+    this.setState({
+      buttons: newButtons
+    });
+  }
+
+  clearCustomButtonText(index) {
+    let newButtons = [...this.state.buttons];
+    newButtons[index].text = 'custom';
+    newButtons[index].customText = null;
+    this.setState({
+      buttons: newButtons
+    });
+  }
+
+  setCustomButtonIcon(index, icon) {
+    let newButtons = [...this.state.buttons];
+    newButtons[index].customIcon = icon;
+    this.setState({
+      buttons: newButtons
+    });
+  }
+
+  clearCustomButtonIcon(index) {
+    let newButtons = [...this.state.buttons];
+    newButtons[index].customIcon = null;
+    this.setState({
+      buttons: newButtons
     });
   }
 
@@ -412,11 +450,17 @@ class GSIButtonConfig extends Component {
                         stickerColor={btn.stickerColor}
                         buttonColor={btn.buttonColor}
                         textColor={btn.textColor}
+                        customText={btn.customText || ''}
+                        customIcon={btn.customIcon || ''}
                         text={btn.text}
                         row={btn.row}
                         side={btn.side}
                         setColor={this.setColor}
                         setText={this.setText}
+                        setCustomText={this.setCustomButtonText}
+                        setCustomIcon={this.setCustomButtonIcon}
+                        clearCustomText={this.clearCustomButtonText}
+                        clearCustomIcon={this.clearCustomButtonIcon}
                         active={this.state.activeButtonId === btn.id}
                         setActive={this.setActive}
                         copyButtonAll={this.copyButtonAll}
