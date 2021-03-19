@@ -49,6 +49,7 @@ const $IconSelect = styled(Select)`
   .MuiSelect-icon, .MuiInput-input {
       color: white;
   }
+
   border: 1px solid white;
 `;
 
@@ -274,6 +275,7 @@ class ButtonEditor extends Component {
                 </$GroupContainer>
                 <$GroupContainer>
                     <span>Function</span>
+                    <label style={{ fontSize: '10px' }}>{'Choose custom text AND custom i   con'}</label>
                     <input
                         type="text"
                         maxLength="5"
@@ -297,12 +299,13 @@ class ButtonEditor extends Component {
                             const NewIcon = Icons[stickerTexts[txt[0]].icon];
                             console.log(stickerTexts[txt[0]].icon);
                             return (
-                                <MenuItem value={txt[0]}><NewIcon height="30px" width="30px" color={'red'} style={{ height: '30px', width: '30px', paddingLeft: '10px' }} /></MenuItem>
+                                <MenuItem value={txt[0]}><NewIcon height="30px" width="30px" color={'grey'} style={{ height: '30px', width: '30px', paddingLeft: '10px' }} /></MenuItem>
                             );
                         }
                         )}
                     </$IconSelect>
                     <button
+                        disabled={this.state.customText === '' || this.state.customIcon === 'none'}
                         onClick={event => {
                             if (this.state.customText !== '') {
                                 setCustomText(index, this.state.customText);
