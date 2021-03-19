@@ -275,7 +275,7 @@ class ButtonEditor extends Component {
                 </$GroupContainer>
                 <$GroupContainer>
                     <span>Function</span>
-                    <label style={{ fontSize: '10px' }}>{'Choose custom text AND custom i   con'}</label>
+                    <label style={{ fontSize: '10px' }}>{'Choose custom text AND custom icon'}</label>
                     <input
                         type="text"
                         maxLength="5"
