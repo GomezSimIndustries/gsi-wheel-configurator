@@ -103,6 +103,34 @@ export const stickerTexts = {
         text: "DISP",
         icon: "Enable",
     },
+    adjust: {
+        text: "ADJST",
+        icon: "Adjust",
+    },
+    delta: {
+        text: "DELTA",
+        icon: "Delta",
+    },
+    light: {
+        text: "LIGHT",
+        icon: "Light",
+    },
+    logout: {
+        text: "LOGOUT",
+        icon: "Logout",
+    },
+    wiper: {
+        text: "WIPER",
+        icon: "Wiper",
+    },
+    tow: {
+        text: "TOW",
+        icon: "Tow",
+    },
+    time: {
+        text: "TIME",
+        icon: "Time",
+    },
     custom: {
         text: "**CUSTOM**",
         icon: "Enable"
