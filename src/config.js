@@ -228,7 +228,8 @@ export const buttonColors = [
     'red',
     'blue',
     'green',
-    'yellow'
+    'yellow',
+    'purple'
 ];
 
 export const stickerColors = [
