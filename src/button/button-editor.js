@@ -145,7 +145,8 @@ class ButtonEditor extends Component {
             pickerOpen: false,
             pickerElement: '',
             customText: '',
-            customIcon: 'none'
+            customIcon: 'none',
+            stickerColor: ''
         };
         this.togglePicker = this.togglePicker.bind(this);
     }
@@ -160,6 +161,11 @@ class ButtonEditor extends Component {
     }
 
     componentDidUpdate(oldProps, oldState) {
+        if (this.state.stickerColor === '') {
+            this.setState({
+                stickerColor: this.props.stickerColor
+            });
+        }
         if (oldProps.active && !this.props.active) {
             if (this.state.pickerOpen)
                 this.setState({ pickerOpen: false, pickerElement: '' });
@@ -241,9 +247,17 @@ class ButtonEditor extends Component {
                             <$ColorSwatchButton onClick={e => this.togglePicker(e, 'sticker')} color={stickerColor} title="Open/Close Color Picker" />
                             <$HexValue>Value:</$HexValue>
                             <input type="text"
-                                value={stickerColor}
-                                style={{ width: '65px', marginLeft: '10px' }}
-                                onChange={e => setColor('stickerColor', index, e.target.value)}
+                                value={this.state.stickerColor}
+                                style={{ width: '65px', marginLeft: '10px', border: this.state.invalid ? '3px solid red' : '' }}
+                                onChange={e => {
+                                    this.setState({ stickerColor: e.target.value });
+                                    if (/^#[0-9A-F]{6}$/i.test(e.target.value) || /^#([0-9A-F]{3}){1,2}$/i.test(e.target.value) ) {
+                                        setColor('stickerColor', index, e.target.value);
+                                        this.setState({ invalid: false });
+                                    } else {
+                                        this.setState({ invalid: true });
+                                    }
+                                }}
                                 title="Enter Color Hex Value or HTML Color Name" />
                             <$ColorPickerContainer
                                 open={this.state.pickerOpen && this.state.pickerElement === 'sticker'}
@@ -324,6 +338,9 @@ class ButtonEditor extends Component {
                         text={text}
                         texts={stickerTexts} />
                 </$GroupContainer>
+                {this.state.invalid && 
+                    <img src={'./images/ah-ah-ah.gif'} alt='button base'/>
+                }
             </$EditorContainer >
         );
     }

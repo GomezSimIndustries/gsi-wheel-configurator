@@ -83,7 +83,7 @@ class SaveControls extends Component {
                     zIndex: '9'
                 }}></div>
                 <$SaveContainer active={active} onClick={(e) => e.stopPropagation()}>
-                    <p>{'Please save & send both files with your order number to '}<br /><a href="mailto:info@gomezsimindustries.com">{'info@gomezsimindusteries.com'}</a> for proofing and approval</p>
+                    <p>{'Please save & send both files with your order number to '}<br /><a href="mailto:info@gomezsimindustries.com">{'info@gomezsimindustries.com'}</a> for proofing and approval</p>
                     <div>
                         <label htmlFor="imageSaveName">{"Image Name:"}</label>
                         <input id="imageSaveName" type="text" name="imageSaveName" onChange={e => {

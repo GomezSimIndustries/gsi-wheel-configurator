@@ -229,7 +229,8 @@ export const buttonColors = [
     'blue',
     'green',
     'yellow',
-    'purple'
+    'purple',
+    'grey'
 ];
 
 export const stickerColors = [
@@ -1231,6 +1232,145 @@ export const presets = {
                 stickerColor: "#E9262A",
                 rotaryColor: "black",
                 textColor: "white",
+                text: "menu"
+            }
+        ]
+    },
+    sapphire: {
+        name: "Sapphire",
+        buttons: [
+            {
+                id: 0,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "black",
+                text: "flash",
+                row: 1,
+                side: "left"
+            },
+            {
+                id: 1,
+                stickerColor: "#000000",
+                buttonColor: "black",
+                textColor: "#159ad3",
+                text: "enable",
+                row: 2,
+                side: "left"
+            },
+            {
+                id: 2,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "#000000",
+                text: "mute",
+                row: 3,
+                side: "left"
+            },
+            {
+                id: 3,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "#159ad3",
+                text: "volMinus",
+                row: 4,
+                side: "left"
+            },
+            {
+                id: 4,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "black",
+                text: "prev",
+                row: 5,
+                side: "left"
+            },
+            {
+                id: 5,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "black",
+                text: "pitLimit",
+                row: 1,
+                side: "right"
+            },
+            {
+                id: 6,
+                stickerColor: "#000000",
+                buttonColor: "black",
+                textColor: "#159ad3",
+                text: "radio",
+                row: 2,
+                side: "right"
+            },
+            {
+                id: 7,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "#000000",
+                text: "reset",
+                row: 3,
+                side: "right"
+            },
+            {
+                id: 8,
+                stickerColor: "black",
+                buttonColor: "black",
+                textColor: "#159ad3",
+                text: "volPlus",
+                row: 4,
+                side: "right"
+            },
+            {
+                id: 9,
+                stickerColor: "#72b9d9",
+                buttonColor: "blue",
+                textColor: "black",
+                text: "next",
+                row: 5,
+                side: "right"
+            }
+        ],
+        rotaries: [
+            {
+                id: 10,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "multi"
+            },
+            {
+                id: 11,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "bias"
+            },
+            {
+                id: 12,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "#898b8c",
+                text: "scroll"
+            },
+            {
+                id: 13,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "scroll"
+            },
+            {
+                id: 14,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "black",
+                text: "option"
+            },
+            {
+                id: 15,
+                stickerColor: "#72b9d9",
+                rotaryColor: "black",
+                textColor: "black",
                 text: "menu"
             }
         ]
